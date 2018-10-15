@@ -9,9 +9,30 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "flyio": "^0.6.2",
+    "sass": "^1.14.2",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/standard"
+    ],
+    "rules": {
+      "generator-star-spacing": "off",
+      "no-unused-vars": "off",
+      "quotes": "off"
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.4",
@@ -22,8 +43,6 @@
     "@vue/test-utils": "^1.0.0-beta.20",
     "babel-core": "7.0.0-bridge.0",
     "babel-jest": "^23.0.1",
-    "less": "^3.0.4",
-    "less-loader": "^4.1.0",
     "vue-template-compiler": "^2.5.17"
   }
 }
