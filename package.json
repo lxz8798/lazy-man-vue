@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "flyio": "^0.6.2",
-    "sass": "^1.14.2",
+    "node-sass": "^4.9.4",
     "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",

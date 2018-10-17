@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Home from "./views/home/Home.vue";
+import Test from "./views/test/index.vue";
 
 Vue.use(Router);
 
@@ -13,6 +14,11 @@ export default new Router({
       name: "home",
       component: Home
     },
+    {
+      path:"/test",
+      name:'test',
+      component:Test
+    }
     // 生成懒加载的例子
     // {
     //   path: "/about",

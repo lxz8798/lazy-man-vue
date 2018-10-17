@@ -15,9 +15,7 @@ module.exports = {
     // 忽略单引号和双引号
     "quotes":"off",
     // 对象或数组字面量项尾不能有逗号
-    "comma-dangle":[2, "never"],
-    // 语句强制分号结尾
-    "semi":[2, "alwarys"]
+    "comma-dangle":[2, "never"]
   },
   parserOptions: {
     parser: "babel-eslint"

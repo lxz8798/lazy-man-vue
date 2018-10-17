@@ -7,7 +7,8 @@ import fly from "flyio"
 Vue.use(fly)
 
 Vue.config.productionTip = false;
-Vue.config.fly = fly;
+
+Vue.prototype.$fly = fly;
 
 new Vue({
   router,
