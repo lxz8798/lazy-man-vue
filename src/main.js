@@ -2,9 +2,9 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import fly from "flyio"
+import fly from "flyio";
 
-Vue.use(fly)
+Vue.use(fly);
 
 Vue.config.productionTip = false;
 

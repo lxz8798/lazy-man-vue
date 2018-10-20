@@ -26,3 +26,11 @@
 
 `<link rel="icon" href="<%= BASE_URL %>favicon.ico" rel="external nofollow" >`
 
+### 全局变量的设置 - 在项目根目录创建以下项目
+
+.env        # 在所有环节中执行
+.env.local     # 在所有环境中执行，git会ignored
+.env.[mode]     # 只在特定环境执行( [mode] 可以是 "development", "production" or "test" )
+.env.[mode].local  # 在特定环境执行, git会ignored
+.env.development  # 只在生产环境执行
+.env.production   # 只在开发环境执行
