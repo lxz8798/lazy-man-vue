@@ -65,8 +65,8 @@ module.exports = {
     
     // eslint-loader 是否在保存的时候检查
     lintOnSave:true,
-    // 是否使用包含运行时编译器的Vue核心的构建
-    runtimeCompiler: false,
+    // 是否使用包含运行时编译器的Vue核心的构建，热重启
+    runtimeCompiler: true,
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap:false,
     // 默认情况下 babel-loader 忽略其中的所有文件 node_modules
@@ -78,12 +78,14 @@ module.exports = {
         https:false, // https:{type:booklen}
         open:true, // 配置自动启动浏览器
     // 不需要可以设置为proxy:null
-    // proxy:{
-    //     '/api': {
-    //         target:'<url>',
-    //         ws: true,
-    //         changeOrigin: true
-    //     },
+    proxy:{
+        '/api': {
+            target:'http://apis.juhe.cn',
+            changeOrigin: true,
+            pathRewrite: {
+                '^/api': ''
+            }
+        },
     //   '/wa/': {
     //        target: 'http://api.match.hexun.com/',
     //        changeOrigin: true,
@@ -95,7 +97,7 @@ module.exports = {
         // '/foo': {
         //     target: '<other_url>'
         // }
-    // }
+    }
     },
     // 构建时开启多进程处理 babel 编译
     parallel: require('os').cpus().length > 1,

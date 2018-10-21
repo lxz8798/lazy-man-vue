@@ -6,35 +6,31 @@
 
 <style lang="scss">
 div.test-wrap {
-
 }
 </style>
 
 <script>
 export default {
-    name:'testPage!',
-    data () {
-        return {
-            testData:{}
-        }
-    },
-    created () {
-        this.getTestData();
-    },
-    methods: {
-        getTestData () {
-            let params,
-                res
-            
-            params = {
-                dtype:'json',
-                key:'719af00cc3a686d1f23d0e91e698da29'
-            }
+  name: "testPage",
+  data() {
+    return {};
+  },
+  created() {
+    this.getTestData();
+  },
+  methods: {
+    async getTestData() {
+      let params, res;
 
-            res = this.$fly.get('http://apis.juhe.cn/goodbook/catalog',params)
+      params = {
+        key: "719af00cc3a686d1f23d0e91e698da29",
+        dtype: "json"
+      };
 
-            console.log(res,'res')
-        }
+      res = await this.$http.get("/goodbook/catalog", params);
+
+      console.log(res, "res");
     }
-}
+  }
+};
 </script>
