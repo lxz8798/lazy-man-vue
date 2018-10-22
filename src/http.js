@@ -16,7 +16,6 @@ fly.config.baseURL = "/api"
 fly.interceptors.request.use((request, promise) => {
     // 输出请求体
     console.log(request.body,"request data");
-    // request.headers["X-Tag"] = "flyio";
     //可以通过promise.reject／resolve直接中止请求
     //promise.resolve("fake data")
     return request;

@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <router-view/>
+    <!-- 避免渲染DOM -->
+    <keep-alive>
+      <router-view/>
+    </keep-alive>
   </div>
 </template>
 

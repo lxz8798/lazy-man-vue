@@ -1,17 +1,17 @@
 <template>
-<div class="test-wrap">
+<div class="example-wrap">
 
 </div>
 </template>
 
 <style lang="scss">
-div.test-wrap {
+div.example-wrap {
 }
 </style>
 
 <script>
 export default {
-  name: "testPage",
+  name: "examplePage",
   data() {
     return {};
   },
