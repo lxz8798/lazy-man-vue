@@ -4,9 +4,11 @@ import router from "./router";
 import store from "./store/index";
 import _ from "lodash";
 import fly from "./http";
+import iView from 'iview'
 
 Vue.use(fly);
 Vue.use(_);
+Vue.use(iView)
 
 Vue.config.productionTip = false;
 
