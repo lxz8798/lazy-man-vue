@@ -1,6 +1,6 @@
 <template>
 <div class="example-wrap">
-
+  {{msg}}
 </div>
 </template>
 
@@ -13,12 +13,18 @@ div.example-wrap {
 export default {
   name: "examplePage",
   data() {
-    return {};
+    return {
+      msg:'这里是例子的页面!'
+    };
   },
   created() {
     this.getTestData();
+    this.getMockData();
   },
   methods: {
+    /**
+     * 来自聚合数据的真实请求
+     */
     async getTestData() {
       let params, res;
 
@@ -29,7 +35,13 @@ export default {
 
       res = await this.$http.get("/goodbook/catalog", params);
 
-      console.log(res, "res");
+      console.log(res, "返回的结果");
+    },
+    async getMockData () {
+      let params, res;
+      params = {}
+      // res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/test/list','get')
+      console.log(process.env.VUE_APP_MOCKURL,'模拟的mock数据')
     }
   }
 };

@@ -15,7 +15,7 @@ fly.config.baseURL = "/api"
 // 添加请求拦截器
 fly.interceptors.request.use((request, promise) => {
     // 输出请求体
-    console.log(request.body,"request data");
+    console.log(request.body,"拦截的request");
     //可以通过promise.reject／resolve直接中止请求
     //promise.resolve("fake data")
     return request;

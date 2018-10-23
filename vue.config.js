@@ -1,8 +1,15 @@
 const path = require("path");
+// 单页或多页入口
 const utils = require("./utils/utils.js");
+// 去console插件
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+// 压缩格式
+const productionGzipExtensions = ['js', 'css'];
+// gzip压缩插件
+const CompressionWebpackPlugin = require('compression-webpack-plugin');
 
 module.exports = {
-    // 生产模式
+    // baseUrl
     baseUrl: process.env.NODE_ENV === 'prodcution' ? '/' : './',
     // 输出目录
     outputDir:'dist',
@@ -14,13 +21,17 @@ module.exports = {
     filenameHashing:true,
     // 入口文件的配置项
     // 每个page对应一个入口
-    pages: utils.getPages(),
-    // eslint-loader 是否在保存的时候检查
-    lintOnSave:true,
+    pages: utils.getPages('spa'),
+    // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
+    lintOnSave: process.env.NODE_ENV !== 'production',
     // 是否使用包含运行时编译器的Vue核心的构建，热重启
     runtimeCompiler: true,
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap:false,
+    // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性（注：仅影响构建时注入的标签）
+    crossorigin: '',
+    // 在生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
+    integrity: false,
     // 默认情况下 babel-loader 忽略其中的所有文件 node_modules
     transpileDependencies: [],
     // host,post,https
@@ -55,7 +66,7 @@ module.exports = {
         modules: true, // 是否开启支持‘foo.module.css’样式
         extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
         sourceMap: false, // 是否在构建样式地图，false将提高构建速度
-        loaderOptions: { // css预设器配置项
+        loaderOptions: {  //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
             css: {
                 localIdentName: '[name]-[hash]',
                 camelCase: 'only'
@@ -65,41 +76,40 @@ module.exports = {
             }
         }
     },
-    // webpack 链接 API，用于生成和修改 webapck 配置
+    // 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)
     // https://github.com/mozilla-neutrino/webpack-chain
     chainWebpack: config => {
         // 去除console.log
         if (process.env.NODE_ENV === 'production') {
-            config.module.rule('js').include.add(/some-module-to-transpile/), // 要处理的模块
-            config.module
-            .rule('scss')
-            .use('sass-loader')
-            .tap(options =>
-                merge(options, {
-                includePaths: [path.resolve(dirname, 'node_modules')],
-                })
-            ),
-            config
-            .plugin('html')
-            .tap(args => {
-                return [/* new args to pass to html-webpack-plugin's constructor */]
-            }),
-            config
-              .plugin('uglify')
-              .tap(([options]) =>{
-                // 去除 console.log
-                return [Object.assign(options, {
-                  uglifyOptions: { compress: {
-                    drop_console : true,
-                    pure_funcs: ['console.log']
-                  }}
-                })]
-            })
+            // 为生产环境修改配置...
+        } else {
+            // 为开发环境修改配置...
+            config.resolve.alias.set('@', resolve('src')).set('assets',resolve('src/assets')).set('components',resolve('src/components'));
         }
 	},
     configureWebpack: config => {
+        let plugins = [
+            new UglifyJsPlugin({
+              uglifyOptions: {
+                compress: {
+                  warnings: false,
+                  drop_debugger: true,
+                  drop_console: true,
+                },
+              },
+              sourceMap: false,
+              parallel: true,
+            }),
+            new CompressionWebpackPlugin({
+                algorithm: 'gzip',
+                test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+                threshold: 10240,
+                minRatio: 0.8
+            })
+        ]
         if (process.env.NODE_ENV === 'production') {
           // 为生产环境修改配置...
+          config.plugins = [...config.plugins, ...plugins]
         } else {
           // 为开发环境修改配置...
         }
