@@ -34,13 +34,16 @@ https://www.my-app.com/。如果应用被部署在一个子路径上，你就需
 ***
 ## 全局变量的设置 - 在项目根目录创建以下项目
 
-+.env        # 在所有环节中执行
-+.env.local     # 在所有环境中执行，git会ignored
-+.env.[mode]     # 只在特定环境执行( [mode] 可以是 "development", "production" or "test" )
-+.env.[mode].local  # 在特定环境执行, git会ignored
-+.env.development  # 只在生产环境执行
-+.env.production   # 只在开发环境执行
++.env        # 在所有环节中执行 <br />
++.env.local     # 在所有环境中执行，git会ignored <br />
++.env.[mode]     # 只在特定环境执行( [mode] 可以是 "development", "production" or "test" ) <br />
++.env.[mode].local  # 在特定环境执行, git会ignored <br />
++.env.development  # 只在生产环境执行 <br />
++.env.production   # 只在开发环境执行 <br />
 
+***
+### 单页和多页的区别
+![imt](http://images2015.cnblogs.com/blog/1006796/201610/1006796-20161028103931109-77013595.png)
 
 ***
 ## 对于移动端入口的基本配置

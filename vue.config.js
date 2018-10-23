@@ -1,33 +1,5 @@
 const path = require("path");
-const glob = require("glob");
 const utils = require("./utils/utils.js");
-
-//配置pages多页面获取当前文件夹下的html和js
-function getEntry(globPath) {
-	let entries = {},
-		basename, tmp, pathname, appname;
-
-	glob.sync(globPath).forEach(function(entry) {
-		basename = path.basename(entry, path.extname(entry));
-		// console.log(entry)
-		tmp = entry.split('/').splice(-3);
-		console.log(tmp)
-		pathname = basename; // 正确输出js和html的路径
-
-		// console.log(pathname)
-		entries[pathname] = {
-			entry: 'src/' + tmp[0] + '/' + tmp[1] + '/' + tmp[1] + '.js',
-			template: 'src/' + tmp[0] + '/' + tmp[1] + '/' + tmp[2],
-			title:  tmp[2],
-			filename: tmp[2]
-		};
-	});
-	return entries;
-}
-
-let pages = getEntry('./src/pages/**?/*.html');
-console.log(pages)
-//配置end
 
 module.exports = {
     // 生产模式
@@ -42,7 +14,7 @@ module.exports = {
     filenameHashing:true,
     // 入口文件的配置项
     // 每个page对应一个入口
-    pages: utils.getPages(),    
+    pages: utils.getPages(),
     // eslint-loader 是否在保存的时候检查
     lintOnSave:true,
     // 是否使用包含运行时编译器的Vue核心的构建，热重启
