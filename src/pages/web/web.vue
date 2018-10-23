@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="web">
     <!-- 避免重复渲染DOM -->
     <keep-alive>
       <router-view/>

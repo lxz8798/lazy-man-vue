@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="phone">
     <!-- 避免重复渲染DOM -->
     <keep-alive>
       <router-view/>
@@ -8,7 +8,7 @@
 </template>
 
 <style lang="scss">
-#app {
+#phone {
   font-family: "Avenir", Helvetica, Arial, sans-serif, "MSYH";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

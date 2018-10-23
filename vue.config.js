@@ -1,5 +1,6 @@
 const path = require("path");
 const glob = require("glob");
+const utils = require("./utils/utils.js");
 
 //配置pages多页面获取当前文件夹下的html和js
 function getEntry(globPath) {
@@ -36,33 +37,12 @@ module.exports = {
     // js、css、img、fonts静态资源的目录
     assetsDir:'static',
     // 生成的index.html
-    // indexPath:'index.html',
+    indexPath:'index.html',
     // 生成的静态资源是否使用哈希，默认是true
     filenameHashing:true,
     // 入口文件的配置项
     // 每个page对应一个入口
-    pages: {
-        index: {
-          // page 的入口
-          entry: 'src/main.js',
-          // 模板来源
-          template: 'public/index.html',
-          // 在 dist/index.html 的输出
-          filename: 'index.html',
-          // 当使用 title 选项时，
-          // template 中的 title 标签需要是 <title><%= htmlWebpackPlugin.options.title %></title>
-          title: '首页',
-          // 在这个页面中包含的块，默认情况下会包含
-          // 提取出来的通用 chunk 和 vendor chunk。
-          chunks: ['chunk-vendors', 'chunk-common', 'index']
-        },
-    //     // 当使用只有入口的字符串格式时，
-    //     // 模板会被推导为 `public/subpage.html`
-    //     // 并且如果找不到的话，就回退到 `public/index.html`。
-    //     // 输出文件名会被推导为 `subpage.html`。
-    //     subpage: 'src/subpage/main.js'
-    },
-    
+    pages: utils.getPages(),    
     // eslint-loader 是否在保存的时候检查
     lintOnSave:true,
     // 是否使用包含运行时编译器的Vue核心的构建，热重启
