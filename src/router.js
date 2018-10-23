@@ -25,7 +25,7 @@ export default new Router({
         keepAlive:false // 是否缓存
       }
     }
-    // 生成懒加载的例子
+    // 路由懒加载，按需加载例子
     // {
     //   path: "/about",
     //   name: "about",

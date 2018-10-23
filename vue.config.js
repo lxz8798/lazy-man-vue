@@ -7,6 +7,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const productionGzipExtensions = ['js', 'css'];
 // gzip压缩插件
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+// 把js放到页面底部
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     // baseUrl
@@ -84,7 +86,6 @@ module.exports = {
             // 为生产环境修改配置...
         } else {
             // 为开发环境修改配置...
-            config.resolve.alias.set('@', resolve('src')).set('assets',resolve('src/assets')).set('components',resolve('src/components'));
         }
 	},
     configureWebpack: config => {
@@ -92,21 +93,30 @@ module.exports = {
             new UglifyJsPlugin({
               uglifyOptions: {
                 compress: {
-                  warnings: false,
-                  drop_debugger: true,
-                  drop_console: true,
+                    warnings: false,
+                    drop_console: true,
+                    pure_funcs: ['console.log']
                 },
               },
-              sourceMap: false,
-              parallel: true,
+              sourceMap: false
             }),
             new CompressionWebpackPlugin({
                 algorithm: 'gzip',
                 test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
                 threshold: 10240,
                 minRatio: 0.8
+            }),
+            new HtmlWebpackPlugin({
+                inject: 'body',
             })
         ]
+        // 打包时，把vue、vuex、vue-router、axios等，换用国内的bootcdn 直接引入到根目录的index.html中
+        // externals: { 
+        //     'vue': 'Vue', 
+        //     'vue-router': 'VueRouter', 
+        //     'vuex': 'Vuex', 
+        //     'axios': 'axios'
+        // }
         if (process.env.NODE_ENV === 'production') {
           // 为生产环境修改配置...
           config.plugins = [...config.plugins, ...plugins]
