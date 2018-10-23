@@ -57,27 +57,23 @@ module.exports = {
         host: '0.0.0.0',
         https:false, // https:{type:booklen}
         open:true, // 配置自动启动浏览器
-    // 不需要可以设置为proxy:null
-    proxy:{
-        '/api': {
-            target:'http://apis.juhe.cn',
-            changeOrigin: true,
-            pathRewrite: {
-                '^/api': ''
-            }
-        },
-    //   '/wa/': {
-    //        target: 'http://api.match.hexun.com/',
-    //        changeOrigin: true,
-    //        pathRewrite: {
-    //           '^/wa': ''
-    //        }
-    //    }
-        // 多页开发入口
-        // '/foo': {
-        //     target: '<other_url>'
-        // }
-    }
+        // 不需要可以设置为proxy:null
+        proxy:{
+            '/api': {
+                target:'http://apis.juhe.cn',
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            },
+        //   '/wa/': {
+        //        target: 'http://api.match.hexun.com/',
+        //        changeOrigin: true,
+        //        pathRewrite: {
+        //           '^/wa': ''
+        //        }
+        //    }
+        }
     },
     // 构建时开启多进程处理 babel 编译
     parallel: require('os').cpus().length > 1,
@@ -92,7 +88,9 @@ module.exports = {
                 localIdentName: '[name]-[hash]',
                 camelCase: 'only'
             },
-            stylus: {}
+            sass: {
+                includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
+            }
         }
     },
     // webpack 链接 API，用于生成和修改 webapck 配置

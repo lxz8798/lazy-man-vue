@@ -3,12 +3,14 @@ import Phone from "./phone.vue";
 import router from "../../router";
 import store from "../../store/index";
 import _ from "lodash";
-import fly from "../../http";
+import fly from "../../http"; /* eslint-disable */
+import normalize from "normalize.css";
 import flexible from "amfe-flexible";
 
 Vue.use(fly);
 Vue.use(_);
 Vue.use(flexible);
+Vue.use(normalize);
 
 Vue.config.productionTip = false;
 
