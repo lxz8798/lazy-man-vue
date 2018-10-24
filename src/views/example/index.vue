@@ -58,6 +58,7 @@ export default {
   created() {
     // this.getTestData();
     this.getMockData();
+    this.$flyAll();
   },
   methods: {
     show () {

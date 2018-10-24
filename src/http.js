@@ -1,3 +1,8 @@
+/**
+ * 使用axios二次封装的http请求方案flyio，http.js是基础拦截器
+ * 参考：https://juejin.im/post/59ed8813f265da430b7a66cc
+ * 李啸竹
+ */
 import Vue from "vue";
 import fly from "flyio";
 Vue.use(fly);
@@ -9,7 +14,6 @@ fly.config.headers = {"Content-Type": "application/x-www-form-urlencoded; charse
 fly.config.timeout = 10000;
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改
 fly.config.baseURL = "/api"
-// 参考：https://juejin.im/post/59ed8813f265da430b7a66cc
 
 // 单次请求
 // fly.request("/test",null,{timeout:5000})

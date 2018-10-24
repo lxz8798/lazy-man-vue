@@ -1,3 +1,8 @@
+/**
+ * vue-cli3.0 的自定义配置
+ * 引入了多页开发、多代码入口、多环境入口、优化插件等
+ * 李啸竹
+ */
 const path = require("path");
 // 单页或多页入口
 const utils = require("./utils/utils.js");
