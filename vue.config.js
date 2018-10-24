@@ -86,19 +86,34 @@ module.exports = {
             // 为生产环境修改配置...
         } else {
             // 为开发环境修改配置...
+            config.module
+            .rule('iview')
+            .test(/iview.src.*?js$/)
+            .use('babel')
+                .loader('babel-loader')
+                .end()
         }
-	},
-    configureWebpack: config => {
-        let plugins = [
+    },
+    configureWebpack: {
+        //通过cdn减少体积
+        externals: {
+            vue: "Vue",
+            vuex: "Vuex",
+            // "vue-router": "VueRouter",
+            'jquery': 'jQuery',
+            'iview': 'iview'
+        },
+        // 通过merge合并到默认配置里面，可以使页面热重载
+        plugins: [
             new UglifyJsPlugin({
-              uglifyOptions: {
-                compress: {
-                    warnings: false,
-                    drop_console: true,
-                    pure_funcs: ['console.log']
+                uglifyOptions: {
+                    compress: {
+                        warnings: false,
+                        drop_console: true,
+                        pure_funcs: ['console.log']
+                    },
                 },
-              },
-              sourceMap: false
+                sourceMap: false
             }),
             new CompressionWebpackPlugin({
                 algorithm: 'gzip',
@@ -110,16 +125,10 @@ module.exports = {
                 inject: 'body',
             })
         ]
-        // 打包时，把vue、vuex、vue-router、axios等，换用国内的bootcdn 直接引入到根目录的index.html中
-        // externals: { 
-        //     'vue': 'Vue', 
-        //     'vue-router': 'VueRouter', 
-        //     'vuex': 'Vuex', 
-        //     'axios': 'axios'
-        // }
+    },
+    configureWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
           // 为生产环境修改配置...
-          config.plugins = [...config.plugins, ...plugins]
         } else {
           // 为开发环境修改配置...
         }

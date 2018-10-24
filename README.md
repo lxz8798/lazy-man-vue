@@ -43,7 +43,7 @@ https://www.my-app.com/。如果应用被部署在一个子路径上，你就需
 
 ***
 ### 单页和多页的区别
-![imt](http://images2015.cnblogs.com/blog/1006796/201610/1006796-20161028103931109-77013595.png)
+![imt](https://img-blog.csdn.net/20180301164110948?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbTBfMzc5OTkyNDI=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 ***
 ## 对于移动端入口的基本配置
