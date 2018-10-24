@@ -2,13 +2,13 @@ const path = require("path");
 // 单页或多页入口
 const utils = require("./utils/utils.js");
 // 去console插件
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 压缩格式
-const productionGzipExtensions = ['js', 'css'];
+const productionGzipExtensions = ["js", "css"];
 // gzip压缩插件
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // 把js放到页面底部
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
     // baseUrl
@@ -66,7 +66,7 @@ module.exports = {
     // 配置高于chianWebpack中的关于 css loader的配置
     css: { // 配置高于chainWebpack中关于css loader的配置
         modules: true, // 是否开启支持‘foo.module.css’样式
-        extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
+        // extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
         sourceMap: false, // 是否在构建样式地图，false将提高构建速度
         loaderOptions: {  //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
             css: {
@@ -100,8 +100,7 @@ module.exports = {
             vue: "Vue",
             vuex: "Vuex",
             // "vue-router": "VueRouter",
-            'jquery': 'jQuery',
-            'iview': 'iview'
+            'jquery': 'jQuery'
         },
         // 通过merge合并到默认配置里面，可以使页面热重载
         plugins: [

@@ -47,6 +47,7 @@ import '@/mock/mock.js'
 import { Modal } from 'iview'
 export default {
   name: "examplePage",
+  components:{Modal},
   data() {
     return {
       msg:'点击打开iview弹窗!',
@@ -85,7 +86,6 @@ export default {
       params = {};
       res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/test/list');
       this.dataList = JSON.parse(res);
-      console.log(this.dataList)
     }
   }
 };
