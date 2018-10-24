@@ -95,13 +95,13 @@ module.exports = {
         }
     },
     configureWebpack: {
-        //通过cdn减少体积
-        externals: {
-            vue: "Vue",
-            vuex: "Vuex",
-            // "vue-router": "VueRouter",
-            'jquery': 'jQuery'
-        },
+        //通过cdn减少体积，暂时不启用
+        // externals: {
+        //     vue: "Vue",
+        //     vuex: "Vuex",
+        //     // "vue-router": "VueRouter",
+        //     'jquery': 'jQuery'
+        // },
         // 通过merge合并到默认配置里面，可以使页面热重载
         plugins: [
             new UglifyJsPlugin({

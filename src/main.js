@@ -6,7 +6,7 @@ import _ from "lodash";
 import http from "./http"; /* eslint-disable */
 import normalize from "normalize.css";
 
-require('./config.js') /* baseUrl设置 */
+// require('./config.js') /* baseUrl设置 */
 
 Vue.use(_);
 Vue.use(normalize);
