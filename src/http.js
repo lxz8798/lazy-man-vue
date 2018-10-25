@@ -5,6 +5,7 @@
  */
 import Vue from "vue";
 import fly from "flyio";
+
 Vue.use(fly);
 Vue.prototype.$http = fly;
 // 基本配置
@@ -25,15 +26,16 @@ fly.interceptors.request.use((request, promise) => {
     //可以通过promise.reject／resolve直接中止请求
     //promise.resolve("fake data")
     return request;
+},error => {
+    return Promise.reject(error);
 })
 
 // 添加响应拦截器
 fly.interceptors.response.use((response, promise) => {
     // 将请求结果返回
     return response.data;
-},
-(err, promise) => {
-    // 如果有错误会走这里
+},error => {
+    return Promise.reject(error);
 })
 
 //如果需要移除拦截器

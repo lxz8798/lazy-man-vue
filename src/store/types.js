@@ -1,8 +1,6 @@
 // 定义常量，VUE推荐大写
-const INCREMENT = 'INCREMENT'
-const DECREMENT = 'DECREMENT'
+const DETA_LIST = 'DETA_LIST'
 
 export default {
-    INCREMENT,
-    DECREMENT
+    DETA_LIST
 }

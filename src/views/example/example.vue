@@ -2,7 +2,7 @@
 <div class="example-wrap">
   <h1 @click="visible = true">{{msg}}</h1>
   <ul class="example-ul-wrap">
-    <li v-for="(item,index) in dataList.data" :key="index">
+    <li v-for="(item,index) in dataList" :key="index">
       <span class="l">
         <img :src="item.coverUrl" alt="">
       </span>
@@ -38,7 +38,7 @@ div.example-wrap {
   align-items: center;
   border:1px solid #666;
   margin:0 auto;
-  transform: translateY(50%);
+  transform: translateY(20%);
   @include border-radius(5px);
   ul.example-ul-wrap {
     width:inherit;
@@ -87,7 +87,7 @@ div.example-wrap {
 <script>
 /* eslint-disable */ 
 // 需要模拟数据的地方需要引入mock.js
-import { Modal } from 'iview'
+import { Modal } from "iview";
 export default {
   name: "examplePage",
   components:{Modal},
@@ -127,16 +127,14 @@ export default {
      */
     async getMockData () {
       let params, res;
-      res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/list');
+      // 真实请求
+      // res = await this.$http.get('http://1.json/list');
 
-      // $.ajax({
-      //     url: process.env.VUE_APP_MOCKURL + '/list',
-      //     type: 'get',
-      //     dataType: 'json'
-      // }).done(function(data, status, xhr) {
-      //     console.log(JSON.stringify(data, null, 4));
-      // });
-      // this.dataList = JSON.parse(res);
+      // 使用jquery方式获得mockjs数据
+      res = await $.ajax({url: 'http://1.json/list',dataType: 'json'});
+      
+      this.dataList = res.data;
+      console.log(this.dataList)
     }
   }
 };

@@ -22,6 +22,6 @@ export default {
             // .catch(error => {
             //     console.log(error,'失败');
             // })
-        }
+        };
     }
 }

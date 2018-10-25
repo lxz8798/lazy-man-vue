@@ -18,7 +18,7 @@ Vue.use(normalize);
 Vue.use(api);
 Vue.use(http);
 
-process.env.NODE_ENV === 'development' && require('./mock/mock.js');
+process.env.NODE_ENV === 'development' && require('@/mock/mock.js');
 
 Vue.config.productionTip = false;
 

@@ -5,7 +5,7 @@
  * 李啸竹
  */
 /* eslint-disable */ 
-const Mock = require('mockjs');
+import Mock from 'mockjs'
 /* eslint-disable */ 
 const obj = {'aa':'11', 'bb':'22', 'cc':'33', 'dd':'44'};
 /* eslint-disable */ 
@@ -14,9 +14,8 @@ const Random = Mock.Random;
 Mock.setup({
     timeout: 800, // 设置延迟响应，模拟向后端请求数据
 });
-
 /* eslint-disable */ 
-Mock.mock(process.env.VUE_APP_MOCKURL+'/list',/post|get/i, {
+Mock.mock('http://1.json/list',/post|get/i, {
     "data|1-3": [{   // 随机生成1到10个数组元素
         'name': Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
         'id|+1': 88,    // 属性值自动加 1，初始值为88
@@ -34,4 +33,4 @@ Mock.mock(process.env.VUE_APP_MOCKURL+'/list',/post|get/i, {
         'sister|+1': ['jack', 'jim', 'lily'], // array中顺序选取元素作为结果
         'friends|2': ['jack', 'jim'] // 重复2次属性值生成一个新数组
     }]
-  });
+});
