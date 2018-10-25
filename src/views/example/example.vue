@@ -26,30 +26,30 @@
 </template>
 
 <style lang="scss">
-@import 'compass/css3';
-@import './../../assets/base/base.scss';
-@import './../../assets/base/fn.scss';
+@import "compass/css3";
+@import "./../../assets/base/base.scss";
+@import "./../../assets/base/fn.scss";
 
 div.example-wrap {
-  width:$boxWidth;
+  width: $boxWidth;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border:1px solid #666;
-  margin:0 auto;
+  border: 1px solid #666;
+  margin: 0 auto;
   transform: translateY(20%);
   @include border-radius(5px);
   ul.example-ul-wrap {
-    width:inherit;
-    display:flex;
+    width: inherit;
+    display: flex;
     flex-direction: column;
-    padding:15px;
+    padding: 15px;
     li {
-      width:470px;
+      width: 470px;
       line-height: 150%;
       list-style-type: none;
-      display:flex;
+      display: flex;
       flex-direction: row;
       padding-right: 15px;
       margin-bottom: 5px;
@@ -57,12 +57,12 @@ div.example-wrap {
         @include inline-block;
       }
       span.l {
-        width:100px;
+        width: 100px;
         height: 130px;
         @include opacity(0.8); /*对ie兼容的透明度*/
         img {
-          width:inherit;
-          height: inherit;          
+          width: inherit;
+          height: inherit;
         }
       }
       span.r {
@@ -70,9 +70,8 @@ div.example-wrap {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-left:15px;
+        padding-left: 15px;
         ul {
-          
           li.detail-info {
             display: flex;
             flex-direction: column;
@@ -85,27 +84,28 @@ div.example-wrap {
 </style>
 
 <script>
-/* eslint-disable */ 
+/* eslint-disable */
+
 // 需要模拟数据的地方需要引入mock.js
 import { Modal } from "iview";
 export default {
   name: "examplePage",
-  components:{Modal},
+  components: { Modal },
   data() {
     return {
-      msg:'点击打开iview弹窗!',
+      msg: "点击打开iview弹窗!",
       visible: false,
-      dataList:{}
+      dataList: {}
     };
   },
   created() {
     // this.getTestData();
     this.getMockData();
-    this.$flyAll();
+    this.testPromiseAll();
   },
   methods: {
-    show () {
-        this.visible = true;
+    show() {
+      this.visible = true;
     },
     /**
      * 来自聚合数据的真实请求
@@ -125,16 +125,29 @@ export default {
     /**
      * 来自mockjs的模拟数据
      */
-    async getMockData () {
+    async getMockData() {
       let params, res;
       // 真实请求
       // res = await this.$http.get('http://1.json/list');
 
       // 使用jquery方式获得mockjs数据
-      res = await $.ajax({url: 'http://1.json/list',dataType: 'json'});
-      
+      res = await $.ajax({ url: "http://1.json/list", dataType: "json" });
+
       this.dataList = res.data;
-      console.log(this.dataList)
+      // console.log(this.dataList);
+    },
+    testPromiseAll() {
+      let p1 = new Promise((resolve, reject) => {
+        resolve("成功了");
+      });
+
+      let p2 = new Promise((resolve, reject) => {
+        resolve("success");
+      });
+
+      // let p3 = Promise.reject("失败");
+
+      this.$All([p1,p2,p3]);
     }
   }
 };

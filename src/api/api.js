@@ -5,7 +5,7 @@
  * 李啸竹
  */
 export default {
-    install (Vue, options) {
+    install(Vue, options) {
         /**
          * Promise.all 的好处是所有的promise实例都变为resolve的时候，该方法才会返回
          * 并将所有结果传递results数组中。promise数组中任何一个promise为reject的话
@@ -13,15 +13,13 @@ export default {
          * 比如用在结果都返回之前只显示loading的时候
          * 李啸竹
          */
-        Vue.prototype.$flyAll = function (obj) {
-            console.log('flyall obj');
-            // return promises.all(...obj)
-            // .then(result => {
-            //     console.log(result,'成功');
-            // })
-            // .catch(error => {
-            //     console.log(error,'失败');
-            // })
+        Vue.prototype.$All = function (obj) {            
+            Promise.all([...obj]).then(result=>{
+                console.log(result);
+            })
+            .catch(error => {
+                console.error(error);
+            })
         };
     }
 }
