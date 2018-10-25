@@ -14,7 +14,8 @@ fly.config.headers = {"Content-Type": "application/x-www-form-urlencoded; charse
 //设置超时
 fly.config.timeout = 10000;
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改
-fly.config.baseURL = "/api"
+// fly.config.baseURL = "/api"
+fly.config.baseURL = process.env.NODE_ENV !== 'production' ? '/api' : process.env.VUE_APP_DEVELOP;
 
 // 单次请求
 // fly.request("/test",null,{timeout:5000})

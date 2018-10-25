@@ -119,22 +119,16 @@ export default {
       };
 
       res = await this.$http.get("/goodbook/catalog", params);
-
-      console.log(res, "返回的结果");
     },
     /**
      * 来自mockjs的模拟数据
      */
     async getMockData() {
       let params, res;
-      // 真实请求
-      // res = await this.$http.get('http://1.json/list');
-
       // 使用jquery方式获得mockjs数据
       res = await $.ajax({ url: "http://1.json/list", dataType: "json" });
 
       this.dataList = res.data;
-      // console.log(this.dataList);
     },
     testPromiseAll() {
       let p1 = new Promise((resolve, reject) => {
@@ -147,7 +141,7 @@ export default {
 
       // let p3 = Promise.reject("失败");
 
-      this.$All([p1,p2,p3]);
+      this.$All([p1,p2]);
     }
   }
 };

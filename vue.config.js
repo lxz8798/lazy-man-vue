@@ -51,7 +51,7 @@ module.exports = {
         // 不需要可以设置为proxy:null
         proxy:{
             '/api': {
-                target:'http://apis.juhe.cn',
+                target:process.env.VUE_APP_DEVELOP,
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''
