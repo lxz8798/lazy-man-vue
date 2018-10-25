@@ -1,3 +1,7 @@
+/**
+ * 路由，引入路由懒加载，如果有需要的话可以解开注释
+ * 李啸竹
+ */
 import Vue from "vue";
 import VueRouter from "vue-router";
 // import example from "./views/example/example.vue";

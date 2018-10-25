@@ -1,4 +1,8 @@
-// 引入mockjs，好用的模拟数据，比如占位图，随机颜色，数组等等，使用方法：http://mockjs.com/0.1/#%E7%94%A8%E6%B3%95
+/**
+ * 引入mockjs，好用的模拟数据，比如占位图，随机颜色，数组等等，使用方法：http://mockjs.com/0.1/#%E7%94%A8%E6%B3%95
+ * 使用例子请结合view下面的example
+ * 李啸竹
+ */
 /* eslint-disable */ 
 const Mock = require('mockjs');
 /* eslint-disable */ 
