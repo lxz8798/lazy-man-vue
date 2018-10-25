@@ -16,6 +16,9 @@ import api from "./api/api";
 Vue.use(_);
 Vue.use(normalize);
 Vue.use(api);
+Vue.use(http);
+
+process.env.NODE_ENV === 'development' && require('./mock/mock.js');
 
 Vue.config.productionTip = false;
 
@@ -23,7 +26,6 @@ Vue.prototype._ = _;
 
 new Vue({
   router,
-  http,
   store,
   render: h => h(App)
 }).$mount("#app");

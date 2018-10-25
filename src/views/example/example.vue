@@ -87,7 +87,6 @@ div.example-wrap {
 <script>
 /* eslint-disable */ 
 // 需要模拟数据的地方需要引入mock.js
-import '@/mock/mock.js'
 import { Modal } from 'iview'
 export default {
   name: "examplePage",
@@ -128,8 +127,16 @@ export default {
      */
     async getMockData () {
       let params, res;
-      res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/test/list');
-      this.dataList = JSON.parse(res);
+      res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/list');
+
+      // $.ajax({
+      //     url: process.env.VUE_APP_MOCKURL + '/list',
+      //     type: 'get',
+      //     dataType: 'json'
+      // }).done(function(data, status, xhr) {
+      //     console.log(JSON.stringify(data, null, 4));
+      // });
+      // this.dataList = JSON.parse(res);
     }
   }
 };

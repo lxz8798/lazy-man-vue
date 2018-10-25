@@ -4,7 +4,6 @@
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
-// import example from "./views/example/example.vue";
 
 Vue.use(VueRouter);
 
@@ -26,7 +25,6 @@ const router = new VueRouter({
     {
       path:"/example",
       name:'example',
-      // component:example,
       component:getComponent("example"),
       meta: {
         auth: true,
