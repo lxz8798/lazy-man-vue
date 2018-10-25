@@ -1,6 +1,6 @@
 const path = require("path");
 // 单页或多页入口
-const utils = require("./utils/utils.js");
+const utils = require("./src/utils/utils.js");
 // 去console插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 压缩格式
@@ -42,6 +42,7 @@ module.exports = {
         host: '0.0.0.0',
         https:false, // https:{type:booklen}
         open:true, // 配置自动启动浏览器
+        // proxy:null,
         // 不需要可以设置为proxy:null
         proxy:{
             '/api': {
@@ -50,14 +51,7 @@ module.exports = {
                 pathRewrite: {
                     '^/api': ''
                 }
-            },
-        //   '/wa/': {
-        //        target: 'http://api.match.hexun.com/',
-        //        changeOrigin: true,
-        //        pathRewrite: {
-        //           '^/wa': ''
-        //        }
-        //    }
+            }
         }
     },
     // 构建时开启多进程处理 babel 编译

@@ -2,9 +2,23 @@
 <div class="example-wrap">
   <h1 @click="visible = true">{{msg}}</h1>
   <ul class="example-ul-wrap">
-    <li v-for="(item,index) in dataList" :key="index">
-      <span class="cover-wrap"></span>
-      <span class="detail-wrap"></span>
+    <li v-for="(item,index) in dataList.data" :key="index">
+      <span class="l">
+        <img :src="item.coverUrl" alt="">
+      </span>
+      <span class="r">
+        <ul>
+          <li>
+            <h3>{{item.title}}</h3>
+          </li>
+          <li class="detail-info">
+            <span>{{'作者：'+item.name}}</span>
+            <span>{{'生日：'+item.birthday}}</span>
+            <span>{{'城市：'+item.city}}</span>
+          </li>
+          <li></li>
+        </ul>
+      </span>
     </li>
   </ul>
   <Modal v-model="visible" title="Welcome">Welcome to iView</Modal>
@@ -13,27 +27,57 @@
 
 <style lang="scss">
 @import 'compass/css3';
+@import './../../assets/base/base.scss';
+@import './../../assets/base/fn.scss';
+
 div.example-wrap {
-  width:600px;
-  height:120px;
+  width:$boxWidth;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border:1px solid #666;
+  margin:0 auto;
+  transform: translateY(50%);
   @include border-radius(5px);
   ul.example-ul-wrap {
     width:inherit;
-    height:inherit;
     display:flex;
-    justify-content: center;
-    align-items:center;
-    padding:0;
+    flex-direction: column;
+    padding:15px;
     li {
-      width:100px;
+      width:470px;
+      line-height: 150%;
       list-style-type: none;
       display:flex;
       flex-direction: row;
+      padding-right: 15px;
+      margin-bottom: 5px;
       span {
         @include inline-block;
+      }
+      span.l {
+        width:100px;
+        height: 130px;
+        @include opacity(0.8); /*对ie兼容的透明度*/
+        img {
+          width:inherit;
+          height: inherit;          
+        }
+      }
+      span.r {
+        @include inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-left:15px;
+        ul {
+          
+          li.detail-info {
+            display: flex;
+            flex-direction: column;
+          }
+        }
       }
     }
   }
@@ -83,7 +127,6 @@ export default {
      */
     async getMockData () {
       let params, res;
-      params = {};
       res = await this.$http.get(process.env.VUE_APP_MOCKURL + '/test/list');
       this.dataList = JSON.parse(res);
     }
