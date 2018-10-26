@@ -3,8 +3,8 @@
  * 
  * 李啸竹
  */
-import detailApi from './detailApi';
+import global from './global';
 
 export default {
-    detailApi
+    global
 }
