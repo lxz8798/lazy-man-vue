@@ -27,9 +27,11 @@
 
 <style lang="scss">
 @import "compass/css3";
+// @import "compass/utilities/sprites";
+// @import "./../../assets/img/*.png"; 
 @import "./../../assets/base/base.scss";
 @import "./../../assets/base/fn.scss";
-
+// @include all-share-sprites; 
 div.example-wrap {
   width: $boxWidth;
   display: flex;
@@ -100,12 +102,26 @@ export default {
     };
   },
   created() {
+    // this.getTesAll();
     // this.getTestData();
     // this.getTestDataDetail();
     this.getMockData();
     this.testPromiseAll();
   },
   methods: {
+    /**
+     * 并发请求 - 没成功，慢慢改
+     * 李啸竹
+     */
+    // async getTesAll() {
+    //   let params, res;
+    //   params = {
+    //     key: "719af00cc3a686d1f23d0e91e698da29",
+    //     dtype: "json"
+    //   };
+    //   res = await exampleApi.categroyAll();
+    //   console.log(res,'1');
+    // },
     /**
      * 来自聚合数据的真实请求
      * 李啸竹
@@ -118,7 +134,7 @@ export default {
         pn: 1,
         rn: 10
       };
-      res = await exampleApi.categroyDetail(params);
+      res = await exampleApi.categroyDetail();
       console.log(res);
     },
     /**

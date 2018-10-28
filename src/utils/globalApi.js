@@ -8,13 +8,19 @@
  * 李啸竹
  */
 import fly from "flyio";
-import Qs from "qs";
+import qs from "qs";
 
 export default {
     getApiData(url, params, type) {
-        let res;
+        let res, query, reg;
         type == "get" || type == undefined ? type = "get" : type = type;
-        // catalog_id=257&pn=1&rn=10&dtype=&key=719af00cc3a686d1f23d0e91e698da29
+        reg = /\?|&|_+/;
+        
+        if (reg.test(url) && typeof url !== 'object' && !params) {
+            query = url.split('?');
+            url = query[0];
+            params = qs.parse(query[1]);
+        }
         switch (type) {
             case "get":
                 res = fly.get(url, params);
@@ -25,12 +31,24 @@ export default {
             case "request":
                 res = fly.request(url, params);
                 return res;
+            case "upload":
+                // 上传也放后面处理
+                // res = fly.request(url, params);
+                break;
             case "all":
-                res = fly.all(url, params);
-                return res;
+                // 并发请求慢慢处理
+                // fly.all([url],params)
+                // .then(fly.spread((records, projects) => {
+                //     // 两个请求都完成
+                //     console.log(records,'records')
+                // }))
+                // .catch((error) => {
+                //     console.log(error)
+                // })
+                break;
             default:
                 res = fly.type(url, params);
                 break;
-        };
+        };        
     }
 };
