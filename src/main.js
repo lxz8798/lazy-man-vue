@@ -9,20 +9,24 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import _ from "lodash";
-import http from "./http"; /* eslint-disable */
+import fly from "./http"; /* eslint-disable */
 import normalize from "normalize.css";
+import global from "./utils/global";
 import api from "./api/api";
 
 Vue.use(_);
 Vue.use(normalize);
+Vue.use(global);
 Vue.use(api);
-Vue.use(http);
+Vue.use(fly);
 
 process.env.NODE_ENV === 'development' && require('@/mock/mock.js');
 
 Vue.config.productionTip = false;
 
+Vue.prototype.$http = fly;
 Vue.prototype._ = _;
+Vue.prototype.$api = api;
 
 new Vue({
   router,

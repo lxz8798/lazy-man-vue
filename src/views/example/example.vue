@@ -88,6 +88,7 @@ div.example-wrap {
 
 // 需要模拟数据的地方需要引入mock.js
 import { Modal } from "iview";
+import exampleApi from "@/api/example";
 export default {
   name: "examplePage",
   components: { Modal },
@@ -100,12 +101,25 @@ export default {
   },
   created() {
     // this.getTestData();
+    // this.getTestDataDetail();
     this.getMockData();
     this.testPromiseAll();
   },
   methods: {
-    show() {
-      this.visible = true;
+    /**
+     * 来自聚合数据的真实请求
+     * 李啸竹
+     */
+    async getTestDataDetail() {
+      let params, res;
+      params = {
+        key: "719af00cc3a686d1f23d0e91e698da29",
+        catalog_id: 257,
+        pn: 1,
+        rn: 10
+      };
+      res = await exampleApi.categroyDetail(params);
+      console.log(res);
     },
     /**
      * 来自聚合数据的真实请求
@@ -113,13 +127,12 @@ export default {
      */
     async getTestData() {
       let params, res;
-
       params = {
         key: "719af00cc3a686d1f23d0e91e698da29",
         dtype: "json"
       };
-
-      res = await this.$http.get("/goodbook/catalog", params);
+      res = await exampleApi.categroyList(params);
+      console.log(res);
     },
     /**
      * 来自mockjs的模拟数据
@@ -147,7 +160,7 @@ export default {
 
       // let p3 = Promise.reject("失败");
 
-      this.$All([p1,p2]);
+      this.$All([p1, p2]);
     }
   }
 };

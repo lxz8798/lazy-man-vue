@@ -1,3 +1,8 @@
+/**
+ * 判断当前是单页还是多页开发
+ * 接受参数spa、mpa
+ * 李啸竹
+ */
 const glob = require("glob");
 const PAGE_PATH = './src/pages';  // 注意是./ 而不是../ 这可能和commen.js的加载有关系
 

@@ -6,8 +6,6 @@
 import Vue from "vue";
 import fly from "flyio";
 
-Vue.use(fly);
-Vue.prototype.$http = fly;
 // 基本配置
 //定义公共headers
 fly.config.headers = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"};

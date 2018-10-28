@@ -3,8 +3,3 @@
  * 
  * 李啸竹
  */
-import global from './global';
-
-export default {
-    global
-}
