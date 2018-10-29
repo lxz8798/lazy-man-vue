@@ -9,6 +9,7 @@
  */
 import fly from "flyio";
 import qs from "qs";
+import fs from "fs";
 
 export default {
     getApiData(url, params, type) {
@@ -32,7 +33,8 @@ export default {
                 res = fly.request(url, params);
                 return res;
             case "upload":
-                // 上传也放后面处理
+                //upload(url,formData,options={})
+                console.log(123);
                 // res = fly.request(url, params);
                 break;
             case "all":

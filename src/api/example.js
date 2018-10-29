@@ -11,7 +11,7 @@ const categroyDetail = params => api.getApiData("/goodbook/query?catalog_id=257&
 // const test1 = params => api.getApiData("/goodbook/query?catalog_id=257&pn=1&rn=10&dtype=&key=719af00cc3a686d1f23d0e91e698da29");
 // const test2 = params => api.getApiData("/goodbook/query?catalog_id=257&pn=1&rn=10&dtype=&key=719af00cc3a686d1f23d0e91e698da29");
 // const categroyAll = params => api.getApiData([test1,test2],"","all");
-
+const testUpload = params => api.getApiData("/uploadTest",params,"upload");
 export default {
-    categroyList, categroyDetail
+    categroyList, categroyDetail,testUpload
 };

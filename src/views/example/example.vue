@@ -22,16 +22,16 @@
     </li>
   </ul>
   <Modal v-model="visible" title="Welcome">Welcome to iView</Modal>
+  <Upload action="//jsonplaceholder.typicode.com/posts/">
+      <Button icon="ios-cloud-upload-outline">Upload files</Button>
+  </Upload>
 </div>
 </template>
 
 <style lang="scss">
 @import "compass/css3";
-// @import "compass/utilities/sprites";
-// @import "./../../assets/img/*.png"; 
 @import "./../../assets/base/base.scss";
 @import "./../../assets/base/fn.scss";
-// @include all-share-sprites; 
 div.example-wrap {
   width: $boxWidth;
   display: flex;
@@ -89,11 +89,11 @@ div.example-wrap {
 /* eslint-disable */
 
 // 需要模拟数据的地方需要引入mock.js
-import { Modal } from "iview";
+import { Modal,Upload,Button } from "iview";
 import exampleApi from "@/api/example";
 export default {
   name: "examplePage",
-  components: { Modal },
+  components: { Modal,Upload,Button },
   data() {
     return {
       msg: "点击打开iview弹窗!",
