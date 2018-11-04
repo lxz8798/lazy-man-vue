@@ -16,7 +16,7 @@ export default {
         let res, query, reg;
         type == "get" || type == undefined ? type = "get" : type = type;
         reg = /\?|&|_+/;
-        
+
         if (reg.test(url) && typeof url !== 'object' && !params) {
             query = url.split('?');
             url = query[0];
@@ -32,25 +32,23 @@ export default {
             case "request":
                 res = fly.request(url, params);
                 return res;
-            case "upload":
-                //upload(url,formData,options={})
-                console.log(123);
-                // res = fly.request(url, params);
-                break;
             case "all":
-                // 并发请求慢慢处理
-                // fly.all([url],params)
-                // .then(fly.spread((records, projects) => {
-                //     // 两个请求都完成
-                //     console.log(records,'records')
-                // }))
-                // .catch((error) => {
-                //     console.log(error)
-                // })
-                break;
+                res = fly.all([url]).then(fly.spread((records, projects) => {
+                    return records
+                }))
+                    .catch(error => {
+                        console.log(error);
+                    })
+                return res;
+            case "upload":
+                let formData = {
+                    file: fs.createReadStream('') //文件
+                }
+                res = fly.upload(url,formData);
+                return res;
             default:
                 res = fly.type(url, params);
                 break;
-        };        
+        };
     }
 };

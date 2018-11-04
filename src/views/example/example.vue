@@ -22,7 +22,7 @@
     </li>
   </ul>
   <Modal v-model="visible" title="Welcome">Welcome to iView</Modal>
-  <Upload action="//jsonplaceholder.typicode.com/posts/">
+  <Upload action="testUpload()">
       <Button icon="ios-cloud-upload-outline">Upload files</Button>
   </Upload>
 </div>
@@ -87,7 +87,6 @@ div.example-wrap {
 
 <script>
 /* eslint-disable */
-
 // 需要模拟数据的地方需要引入mock.js
 import { Modal,Upload,Button } from "iview";
 import exampleApi from "@/api/example";
@@ -106,22 +105,20 @@ export default {
     // this.getTestData();
     // this.getTestDataDetail();
     this.getMockData();
-    this.testPromiseAll();
+    // this.testPromiseAll();
   },
   methods: {
     /**
-     * 并发请求 - 没成功，慢慢改
+     * 来自聚合数据的真实请求
+     * 并发请求的测试
      * 李啸竹
      */
-    // async getTesAll() {
-    //   let params, res;
-    //   params = {
-    //     key: "719af00cc3a686d1f23d0e91e698da29",
-    //     dtype: "json"
-    //   };
-    //   res = await exampleApi.categroyAll();
-    //   console.log(res,'1');
-    // },
+    async getTesAll() {
+      let params, res;
+      
+      res = await exampleApi.categroyAll();
+      console.log(res,'all');
+    },
     /**
      * 来自聚合数据的真实请求
      * 李啸竹
