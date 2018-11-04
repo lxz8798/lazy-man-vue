@@ -15,6 +15,8 @@
             <span>{{'作者：'+item.name}}</span>
             <span>{{'生日：'+item.birthday}}</span>
             <span>{{'城市：'+item.city}}</span>
+            <span>{{'count:'+count}}</span>
+            <span>{{'isEvenOrOdd:'+isEvenOrOdd}}</span>
           </li>
           <li></li>
         </ul>
@@ -90,6 +92,7 @@ div.example-wrap {
 // 需要模拟数据的地方需要引入mock.js
 import { Modal,Upload,Button } from "iview";
 import exampleApi from "@/api/example";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "examplePage",
   components: { Modal,Upload,Button },
@@ -99,7 +102,7 @@ export default {
       visible: false,
       dataList: {}
     };
-  },
+  },  
   created() {
     // this.getTesAll();
     // this.getTestData();
@@ -107,7 +110,18 @@ export default {
     this.getMockData();
     // this.testPromiseAll();
   },
+  computed:{
+    ...mapGetters([
+      'count',
+      'isEvenOrOdd'
+    ])
+  },
   methods: {
+    ...mapActions([
+      'increment',
+      'decrement',
+      'incrementAsync'
+    ]),
     /**
      * 来自聚合数据的真实请求
      * 并发请求的测试
