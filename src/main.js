@@ -20,8 +20,10 @@ Vue.use(global);
 Vue.use(api);
 Vue.use(fly);
 
-process.env.NODE_ENV === 'development' && require('@/mock/mock.js');
+require("./config");
 
+process.env.NODE_ENV === 'development' && require('@/mock/mock.js');
+console.log(process.env.STAGE,'process.env.STAGE1111111');
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = fly;

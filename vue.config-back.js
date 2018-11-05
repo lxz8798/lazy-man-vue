@@ -5,7 +5,6 @@
  */
 const path = require("path");
 const glob = require('glob');
-const webpack = require('webpack');
 // 单页或多页入口
 const utils = require("./src/utils/utils.js");
 // 去console插件
@@ -18,8 +17,6 @@ const CompressionWebpackPlugin = require("compression-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 //消除冗余的css
 const purifyCssWebpack = require("purifycss-webpack");
-// 获得命令行参数
-const environment = require("./build/environment.js");
 
 module.exports = {
     // baseUrl
@@ -49,11 +46,11 @@ module.exports = {
     transpileDependencies: [],
     // host,post,https
     devServer:{
-        // port:8085, // 端口号
-        // host: '0.0.0.0',
-        // https:false, // https:{type:booklen}
-        // open:true, // 配置自动启动浏览器
-        // proxy:null,
+        port:8085, // 端口号
+        host: '0.0.0.0',
+        https:false, // https:{type:booklen}
+        open:true, // 配置自动启动浏览器
+        proxy:null,
         // 不需要可以设置为proxy:null
         // proxy:{
         //     '/api': {
@@ -109,11 +106,6 @@ module.exports = {
         // },
         // 通过merge合并到默认配置里面，可以使页面热重载
         plugins: [
-            // 允许创建一个在编译时可以配置的全局常量
-            new webpack.DefinePlugin({
-                    "process.env.STAGE": JSON.stringify(environment.stage)
-                    // 'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
-            }),
             // 消除冗余的css代码
             new purifyCssWebpack({
                 paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))

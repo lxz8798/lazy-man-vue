@@ -105,7 +105,7 @@ export default {
   },  
   created() {
     // this.getTesAll();
-    // this.getTestData();
+    this.getTestData();
     // this.getTestDataDetail();
     this.getMockData();
     // this.testPromiseAll();
