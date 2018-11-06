@@ -27,7 +27,7 @@ module.exports = {
     // 输出目录
     outputDir:'dist',
     // js、css、img、fonts静态资源的目录
-    assetsDir:'static',
+    // assetsDir:'',
     // 生成的index.html
     indexPath:'index.html',
     // 生成的静态资源是否使用哈希，默认是true
@@ -40,7 +40,7 @@ module.exports = {
              template: 'public/index.html',
              filename: 'index.html',
              title:'home',
-             BASE_URL:process.env.BASE_URL
+             chunks: ['chunk-vendors', 'chunk-common', 'index']
         },
         web: {
              entry: './src/pages/web/web.js',
@@ -88,14 +88,11 @@ module.exports = {
     // 支持的loader有css-loader、postcss-loader、sass-loader、less-loader、stylus-loader
     // 配置高于chianWebpack中的关于 css loader的配置
     css: { // 配置高于chainWebpack中关于css loader的配置
+        extract: true,// 是否使用css分离插件 ExtractTextPlugin
         modules: true, // 是否开启支持‘foo.module.css’样式
         // extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
         sourceMap: false, // 是否在构建样式地图，false将提高构建速度
         loaderOptions: {  //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
-            css: {
-                localIdentName: '[name]-[hash]',
-                camelCase: 'only'
-            },
             sass: {
                 includePaths: [path.resolve(__dirname, './node_modules/compass-mixins/lib')]
             }
@@ -116,49 +113,12 @@ module.exports = {
                 .end()
         }
     },
-    configureWebpack: {
-        //通过cdn减少体积，暂时不启用
-        // externals: {
-        //     vue: "Vue",
-        //     vuex: "Vuex",
-        //     // "vue-router": "VueRouter",
-        //     'jquery': 'jQuery'
-        // },
-        // 通过merge合并到默认配置里面，可以使页面热重载
-        plugins: [
-            // 允许创建一个在编译时可以配置的全局常量
-            // new webpack.DefinePlugin({
-            //         "process.env.STAGE": JSON.stringify(environment.stage)
-            //         // 'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
-            // }),
-            // 消除冗余的css代码
-            new purifyCssWebpack({
-                paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))
-            }),
-            // 去除console.log
-            new UglifyJsPlugin({
-                uglifyOptions: {
-                    compress: {
-                        warnings: false,
-                        drop_console: true,
-                        pure_funcs: ['console.log']
-                    },
-                },
-                sourceMap: false
-            }),
-            // gzip压缩
-            new CompressionWebpackPlugin({
-                algorithm: 'gzip',
-                test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-                threshold: 10240,
-                minRatio: 0.8
-            }),
-            // new HtmlWebpackPlugin()
-        ]
-    },
     configureWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
           // 为生产环境修改配置...
+        //   new purifyCssWebpack({
+        //     paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))
+        // }),
         } else {
           // 为开发环境修改配置...
         }
