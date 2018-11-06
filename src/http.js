@@ -5,7 +5,7 @@
  */
 import Vue from "vue";
 import fly from "flyio";
-
+import baseUrl from "./../build/setBserUrl";
 // 基本配置
 //定义公共headers
 fly.config.headers = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"};
@@ -13,7 +13,8 @@ fly.config.headers = {"Content-Type": "application/x-www-form-urlencoded; charse
 fly.config.timeout = 10000;
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改
 // fly.config.baseURL = "/api"
-fly.config.baseURL = process.env.NODE_ENV !== 'production' ? '/api' : process.env.VUE_APP_DEVELOP;
+// fly.config.baseURL = process.env.NODE_ENV !== 'production' ? '/api' : process.env.VUE_APP_DEVELOP;
+fly.config.baseURL = baseUrl;
 
 // 单次请求
 // fly.request("/test",null,{timeout:5000})
