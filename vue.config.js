@@ -15,7 +15,7 @@ const productionGzipExtensions = ["js", "css"];
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // 把js放到页面底部
 // const HtmlWebpackPlugin = require("html-webpack-plugin");
-//消除冗余的css
+// 消除冗余的css
 const purifyCssWebpack = require("purifycss-webpack");
 // const webpack = require('webpack');
 // 获得命令行参数
@@ -116,9 +116,24 @@ module.exports = {
     configureWebpack: config => {
         if (process.env.NODE_ENV === 'production') {
           // 为生产环境修改配置...
-        //   new purifyCssWebpack({
-        //     paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))
-        // }),
+          config.plugins.push([
+            // 消除冗余的css
+            new purifyCssWebpack({
+                paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))
+            }),
+            // 生产模式干掉console.log
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false,
+                    drop_console: true,
+                    pure_funcs: ['console.log']
+                },
+                sourceMap: false
+            }),
+            // 作用域提升，让打包出来的代码更小
+            // new webpack.optimize.ModuleConcatenationPlugin()
+          ])
+          
         } else {
           // 为开发环境修改配置...
         }
