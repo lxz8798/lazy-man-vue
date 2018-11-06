@@ -30,6 +30,18 @@ const router = new VueRouter({
         auth: true,
         keepAlive:false // 是否缓存
       }
+    },
+    {
+      path:"/web",
+      beforeEnter(to, from, next) {
+        window.location = "/web.html"
+      }
+    },
+    {
+      path:"/home",
+      beforeEnter(to, from, next) {
+        window.location = "/home.html"
+      }
     }
   ]
 });

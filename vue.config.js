@@ -5,9 +5,8 @@
  */
 const path = require("path");
 const glob = require('glob');
-const webpack = require('webpack');
 // 单页或多页入口
-const utils = require("./src/utils/utils.js");
+// const utils = require("./src/utils/utils.js");
 // 去console插件
 const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 // 压缩格式
@@ -15,11 +14,12 @@ const productionGzipExtensions = ["js", "css"];
 // gzip压缩插件
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // 把js放到页面底部
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 //消除冗余的css
 const purifyCssWebpack = require("purifycss-webpack");
+// const webpack = require('webpack');
 // 获得命令行参数
-const environment = require("./build/environment.js");
+// const environment = require("./build/environment.js");
 
 module.exports = {
     // baseUrl
@@ -34,7 +34,25 @@ module.exports = {
     filenameHashing:true,
     // 入口文件的配置项
     // 每个page对应一个入口
-    pages: utils.getPages('spa'),
+    pages: {
+        index: {
+             entry: 'src/main.js',
+             template: 'public/index.html',
+             filename: 'index.html',
+             title:'home',
+             BASE_URL:process.env.BASE_URL
+        },
+        web: {
+             entry: './src/pages/web/web.js',
+             template: './src/pages/web/web.html',
+             filename: 'web.html',
+        },
+        phone: {
+            entry: './src/pages/phone/phone.js',
+            template: './src/pages/phone/phone.html',
+            filename: 'phone.html',
+        },
+    },
     // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
     lintOnSave: process.env.NODE_ENV !== 'production',
     // 是否使用包含运行时编译器的Vue核心的构建，热重启
@@ -85,8 +103,7 @@ module.exports = {
     },
     // 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)
     // https://github.com/mozilla-neutrino/webpack-chain
-    chainWebpack: config => {
-        // 去除console.log
+    chainWebpack: config => {        
         if (process.env.NODE_ENV === 'production') {
             // 为生产环境修改配置...
         } else {
@@ -110,14 +127,15 @@ module.exports = {
         // 通过merge合并到默认配置里面，可以使页面热重载
         plugins: [
             // 允许创建一个在编译时可以配置的全局常量
-            new webpack.DefinePlugin({
-                    "process.env.STAGE": JSON.stringify(environment.stage)
-                    // 'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
-            }),
+            // new webpack.DefinePlugin({
+            //         "process.env.STAGE": JSON.stringify(environment.stage)
+            //         // 'process.env.LOCAL_URL': JSON.stringify(environment.localUrl)
+            // }),
             // 消除冗余的css代码
             new purifyCssWebpack({
                 paths: glob.sync(path.join(__dirname, "../src/pages/*/*.html"))
             }),
+            // 去除console.log
             new UglifyJsPlugin({
                 uglifyOptions: {
                     compress: {
@@ -128,15 +146,14 @@ module.exports = {
                 },
                 sourceMap: false
             }),
+            // gzip压缩
             new CompressionWebpackPlugin({
                 algorithm: 'gzip',
                 test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
                 threshold: 10240,
                 minRatio: 0.8
             }),
-            new HtmlWebpackPlugin({
-                inject: 'body',
-            })
+            // new HtmlWebpackPlugin()
         ]
     },
     configureWebpack: config => {
