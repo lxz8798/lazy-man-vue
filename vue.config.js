@@ -5,6 +5,7 @@
  */
 const path = require("path");
 const glob = require('glob');
+const webpack = require('webpack');
 // 单页或多页入口
 // const utils = require("./src/utils/utils.js");
 // 去console插件
@@ -18,8 +19,6 @@ const CompressionWebpackPlugin = require("compression-webpack-plugin");
 // 消除冗余的css
 const purifyCssWebpack = require("purifycss-webpack");
 // const webpack = require('webpack');
-// 获得命令行参数
-// const environment = require("./build/environment.js");
 
 module.exports = {
     // baseUrl
@@ -42,16 +41,16 @@ module.exports = {
              title:'home',
              chunks: ['chunk-vendors', 'chunk-common', 'index']
         },
-        web: {
-             entry: './src/pages/web/web.js',
-             template: './src/pages/web/web.html',
-             filename: 'web.html',
-        },
-        phone: {
-            entry: './src/pages/phone/phone.js',
-            template: './src/pages/phone/phone.html',
-            filename: 'phone.html',
-        },
+        // web: {
+        //      entry: './src/pages/web/web.js',
+        //      template: './src/pages/web/web.html',
+        //      filename: 'web.html',
+        // },
+        // phone: {
+        //     entry: './src/pages/phone/phone.js',
+        //     template: './src/pages/phone/phone.html',
+        //     filename: 'phone.html',
+        // },
     },
     // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
     lintOnSave: process.env.NODE_ENV !== 'production',
