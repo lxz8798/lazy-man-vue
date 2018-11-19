@@ -15,9 +15,6 @@ fly.config.timeout = 10000;
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改
 // fly.config.baseURL = "/api"
 fly.config.baseURL = process.env.NODE_ENV == 'development' ? '/api' : process.env.VUE_APP_BASE_URL;
-fly.config.params
-// 单次请求
-// fly.request("/test",null,{timeout:5000})
 
 // 添加请求拦截器
 fly.interceptors.request.use((request, promise) => {
@@ -44,7 +41,6 @@ fly.interceptors.request.use((request, promise) => {
     // 输出请求体
     // console.log(request.body,"拦截的request");
     //可以通过promise.reject／resolve直接中止请求
-    //promise.resolve("fake data")
     return request;
 }, error => {
     return Promise.reject(error);
