@@ -1,4 +1,8 @@
-// 因为数据从 user.js 中获取，所以需要引入该文件
+/* eslint-disable */
+/**
+ * 因为数据从 user.js 中获取，所以需要引入该文件
+ * @李啸竹
+ */
 import aModules from './modules/aModules'
 
 const getters = {

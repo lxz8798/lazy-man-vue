@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * 使用axios二次封装的http请求方案flyio，http.js是基础拦截器
  * 参考：https://juejin.im/post/59ed8813f265da430b7a66cc
@@ -31,12 +32,12 @@ fly.interceptors.request.use((request, promise) => {
         }
     ]
     let [{ name: name, age: age, sex: sex }, { name: name2, age: age2, sex: sex2 }] = params
-    
+
     if (request.method == "GET") {
         request.params = { name, age, sex }
         console.log(request, 'request')
     } else if (request.method == "POST") {
-        request.body = Object.assign(request.body,{ name2, age2, sex2 })
+        request.body = Object.assign(request.body, { name2, age2, sex2 })
     }
     // 输出请求体
     // console.log(request.body,"拦截的request");
@@ -50,13 +51,13 @@ fly.interceptors.request.use((request, promise) => {
 fly.interceptors.response.use((response, promise) => {
     // 将请求结果返回
     return response.data;
-}, error => {
+ }, error => {
     return Promise.reject(error);
-})
+});
 
 //如果需要移除拦截器
 // fly.interceptors.request.use(null);
 // fly.interceptors.response.use(null,null);
 
 // export fly
-export default fly
+export default fly;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * 组装actions.js、getters.js、modeles/XX.js 统一导出
  * 每个模块里面都有例子，可以结合使用
@@ -16,7 +17,7 @@ import aModules from './modules/aModules'
 export default new Vuex.Store({
     getters,
     actions,
-    modules:{
+    modules: {
         aModules
     }
-})
+});
