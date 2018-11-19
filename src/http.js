@@ -8,13 +8,14 @@ import fly from "flyio";
 import baseUrl from "./../build/setBserUrl";
 // 基本配置
 //定义公共headers
-fly.config.headers = { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" };
+// fly.config.headers = { "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8" };
+fly.config.headers = { "X-Tag": "flyio" };
 //设置超时
 fly.config.timeout = 10000;
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改
 // fly.config.baseURL = "/api"
 fly.config.baseURL = process.env.NODE_ENV == 'development' ? '/api' : process.env.VUE_APP_BASE_URL;
-
+fly.config.params
 // 单次请求
 // fly.request("/test",null,{timeout:5000})
 
@@ -33,13 +34,12 @@ fly.interceptors.request.use((request, promise) => {
         }
     ]
     let [{ name: name, age: age, sex: sex }, { name: name2, age: age2, sex: sex2 }] = params
+    
     if (request.method == "GET") {
         request.params = { name, age, sex }
         console.log(request, 'request')
     } else if (request.method == "POST") {
-        console.log(request, 'request')
-        request.params = { name2, age2, sex2 }
-
+        request.body = Object.assign(request.body,{ name2, age2, sex2 })
     }
     // 输出请求体
     // console.log(request.body,"拦截的request");
