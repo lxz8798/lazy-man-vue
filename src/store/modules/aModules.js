@@ -1,15 +1,21 @@
-// example one，引入常量
+/**
+ * 引入模块化的types
+ * @李啸竹
+ */
 import types from './../types'
+
 // 状态
 const state = {
     count:1
 }
+
 //计算
 var getter = {
     count (state) {
         return state.count
     }
 }
+
 // 异步
 const actions = {
     increment({ commit, state }){
@@ -24,6 +30,7 @@ const actions = {
         }
     }
 }
+
 // 同步
 const mutations = {
     // 此处的事件为上方 actions 中的 commit(types.INCREMENT)
@@ -35,10 +42,14 @@ const mutations = {
         state.count--
     }
 }
-// 导出
-export default {
+
+// 统一赋值
+var aModules = {
     state,
     getter,
     actions,
-    mutations    
+    mutations
 }
+
+// 导出
+export default aModules

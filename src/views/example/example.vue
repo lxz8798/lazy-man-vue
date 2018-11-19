@@ -90,19 +90,19 @@ div.example-wrap {
 <script>
 /* eslint-disable */
 // 需要模拟数据的地方需要引入mock.js
-import { Modal,Upload,Button } from "iview";
+import { Modal, Upload, Button } from "iview";
 import exampleApi from "@/api/example";
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "examplePage",
-  components: { Modal,Upload,Button },
+  components: { Modal, Upload, Button },
   data() {
     return {
       msg: "点击打开iview弹窗!",
       visible: false,
       dataList: {}
     };
-  },  
+  },
   created() {
     // this.getTesAll();
     this.getTestData();
@@ -110,18 +110,12 @@ export default {
     this.getMockData();
     // this.testPromiseAll();
   },
-  computed:{
-    ...mapGetters([
-      'count',
-      'isEvenOrOdd'
-    ])
+  computed: {
+    ...mapGetters(["count", "isEvenOrOdd"]),
+    ...mapState({count:state=>state.aModules.count})
   },
   methods: {
-    ...mapActions([
-      'increment',
-      'decrement',
-      'incrementAsync'
-    ]),
+    ...mapActions(["increment", "decrement", "incrementAsync"]),
     /**
      * 来自聚合数据的真实请求
      * 并发请求的测试
@@ -129,9 +123,9 @@ export default {
      */
     async getTesAll() {
       let params, res;
-      
+
       res = await exampleApi.categroyAll();
-      console.log(res,'all');
+      console.log(res, "all");
     },
     /**
      * 来自聚合数据的真实请求

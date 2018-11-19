@@ -7,7 +7,7 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import store from "./store/index";
 import _ from "lodash";
 import fly from "./http"; /* eslint-disable */
 import normalize from "normalize.css";
@@ -19,8 +19,6 @@ Vue.use(normalize);
 Vue.use(global);
 Vue.use(api);
 Vue.use(fly);
-
-require("./config");
 
 process.env.NODE_ENV === 'development' && require('@/mock/mock.js');
 
