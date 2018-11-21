@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "v-footer",
   data() {
     return {
       title: "这里是公共用的底部!"

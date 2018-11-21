@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "header",
+  name: "v-header",
   data() {
     return {
       title: "这里是公共用的头部!"

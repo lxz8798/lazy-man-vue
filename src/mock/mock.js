@@ -19,7 +19,7 @@ Mock.mock('http://1.json/list',/post|get/i, {
     "data|1-3": [{   // 随机生成1到10个数组元素
         'name': Random.cname(), // Random.cname() 随机生成一个常见的中文姓名
         'id|+1': 88,    // 属性值自动加 1，初始值为88
-        'title': Random.csentence(80, 100), //  Random.csentence( min, max )
+        'title': Random.csentence(40, 60), //  Random.csentence( min, max )
         'coverUrl': Random.dataImage('100x130', '100x130'), // Random.dataImage( size, text ) 生成一段随机的 Base64 图片编码
         'age|18-28': 0,   // 18至28以内随机整数, 0只是用来确定类型
         'birthday': '@date("yyyy-MM-dd")',  // 日期

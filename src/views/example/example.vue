@@ -1,5 +1,5 @@
 <template>
-<div class="example-wrap">
+<div class="example-wrap">  
   <h1 @click="visible = true">{{msg}}</h1>
   <ul class="example-ul-wrap">
     <li v-for="(item,index) in dataList" :key="index">
@@ -112,7 +112,7 @@ export default {
   },
   computed: {
     ...mapGetters(["count", "isEvenOrOdd"]),
-    ...mapState({count:state=>state.aModules.count})
+    ...mapState({ count: state => state.aModules.count })
   },
   methods: {
     ...mapActions(["increment", "decrement", "incrementAsync"]),
@@ -151,7 +151,6 @@ export default {
         dtype: "json"
       };
       res = await exampleApi.categroyList(params);
-      console.log(res);
     },
     /**
      * 来自mockjs的模拟数据

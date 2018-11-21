@@ -2,7 +2,13 @@
   <div id="app">
     <!-- 避免重复渲染DOM -->
     <keep-alive>
+      <Header></Header>
+    </keep-alive>
+    <keep-alive>
       <router-view/>
+    </keep-alive>
+    <keep-alive>
+      <Footer></Footer>
     </keep-alive>
   </div>
 </template>
