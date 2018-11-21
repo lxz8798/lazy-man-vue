@@ -72,15 +72,15 @@ module.exports = {
         // open:true, // 配置自动启动浏览器
         // proxy:null,
         // 不需要可以设置为proxy:null
-        // proxy:{
-        //     '/api': {
-        //         target:process.env.VUE_APP_BASE_URL,
-        //         changeOrigin: true,
-        //         pathRewrite: {
-        //             '^/api': ''
-        //         }
-        //     }
-        // }
+        proxy:{
+            '/api': {
+                target:process.env.VUE_APP_BASE_URL,
+                changeOrigin: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
     },
     // 构建时开启多进程处理 babel 编译
     parallel: require('os').cpus().length > 1,
