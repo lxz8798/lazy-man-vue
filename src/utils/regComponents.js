@@ -10,7 +10,7 @@ const compArray = [Header,Footer];
 const reaComp = {
     install: function (Vue) {
         compArray.forEach(item => {
-            console.log(item,'item')
+            Vue.component(item.name, item)
         })
         
         // Vue.component('Header', Header)

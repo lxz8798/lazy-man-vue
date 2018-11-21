@@ -6,11 +6,21 @@
 </template>
 
 <style lang="scss">
+$HeaderHeight: .8rem;
+div.Header-wrap {
+  height: $HeaderHeight;
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  
+  border-bottom:1px solid #cecece;
+}
 </style>
 
 <script>
 export default {
-  name: "v-header",
+  name: "Header",
   data() {
     return {
       title: "这里是公共用的头部!"
