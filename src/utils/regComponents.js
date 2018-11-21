@@ -4,13 +4,15 @@
  * 李啸竹
  */
 import Header from "../components/header";
-// import Footer from "../components/footer";
+import Footer from "../components/footer";
 
-// const Header = require("../components/header");
-
+const compArray = [Header,Footer];
 const reaComp = {
     install: function (Vue) {
-        Vue.component('Header', Header)
+        compArray.forEach(item => {
+            console.log(item,'item')
+        })
+        // Vue.component('Header', Header)
     }
 }
 
