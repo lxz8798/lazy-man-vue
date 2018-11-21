@@ -12,6 +12,7 @@ const reaComp = {
         compArray.forEach(item => {
             console.log(item,'item')
         })
+        
         // Vue.component('Header', Header)
     }
 }
