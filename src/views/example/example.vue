@@ -125,7 +125,6 @@ export default {
       let params, res;
 
       res = await exampleApi.categroyAll();
-      console.log(res, "all");
     },
     /**
      * 来自聚合数据的真实请求
@@ -140,7 +139,6 @@ export default {
         rn: 10
       };
       res = await exampleApi.categroyDetail();
-      console.log(res);
     },
     /**
      * 来自聚合数据的真实请求

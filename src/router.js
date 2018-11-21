@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * 路由，引入路由懒加载，如果有需要的话可以解开注释
  * 李啸竹
@@ -52,7 +53,6 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     // 合法性校验
     if (to.meta.auth) {
-        console.log('如果需要可自行配置');
         next();
     }
     next();
