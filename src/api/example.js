@@ -1,7 +1,7 @@
 /* eslint-disable */
 /**
  * example 页面的接口请求
- * 李啸竹
+ * @author 李啸竹
  */
 import api from "@/utils/globalApi";
 

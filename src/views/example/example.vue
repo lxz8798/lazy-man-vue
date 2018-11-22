@@ -119,7 +119,7 @@ export default {
     /**
      * 来自聚合数据的真实请求
      * 并发请求的测试
-     * 李啸竹
+     * @author 李啸竹
      */
     async getTesAll() {
       let params, res;
@@ -128,7 +128,7 @@ export default {
     },
     /**
      * 来自聚合数据的真实请求
-     * 李啸竹
+     * @author 李啸竹
      */
     async getTestDataDetail() {
       let params, res;
@@ -142,7 +142,7 @@ export default {
     },
     /**
      * 来自聚合数据的真实请求
-     * 李啸竹
+     * @author 李啸竹
      */
     async getTestData() {
       let params, res;
@@ -154,7 +154,7 @@ export default {
     },
     /**
      * 来自mockjs的模拟数据
-     * 李啸竹
+     * @author 李啸竹
      */
     async getMockData() {
       let params, res;
@@ -165,7 +165,7 @@ export default {
     },
     /**
      * 使用Promise.all 集中处理
-     * 李啸竹
+     * @author 李啸竹
      */
     testPromiseAll() {
       let p1 = new Promise((resolve, reject) => {

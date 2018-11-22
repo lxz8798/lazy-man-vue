@@ -3,7 +3,7 @@
  * @process.env.NODE_ENV 判断当前环境对baseUrl进行赋值
  * @.env.test是test的环境变量
  * @.env.demo是demo的环境变量
- * 李啸竹
+ * @author 李啸竹
  */
 let baseUrl = "";
 

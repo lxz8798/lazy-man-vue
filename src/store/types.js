@@ -2,7 +2,7 @@
 /**
  * 定义常量,使用常替代mutation事件类型，VUE推荐大写
  * @DETAIL_COUNT 测试用
- * 李啸竹
+ * @author 李啸竹
  */
 const DETAIL_COUNT = 'DETAIL_COUNT'
 const INCREMENT = 'INCREMENT'

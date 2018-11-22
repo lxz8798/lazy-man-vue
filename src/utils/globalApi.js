@@ -5,7 +5,7 @@
  * @type 类型，默认是get、post可选，也可以传入其他类型的请求方式如all、request
  * 也支持node增强方式，如download、upload
  * 详情请参考https://www.jianshu.com/p/99915695267a
- * 李啸竹
+ * @author 李啸竹
  */
 import fly from "flyio";
 import qs from "qs";

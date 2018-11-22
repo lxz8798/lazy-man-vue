@@ -1,7 +1,7 @@
 /* eslint-disable */
 /**
  * 引入模块化的types
- * @李啸竹
+ * @author 李啸竹
  */
 import types from './../types';
 

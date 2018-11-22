@@ -2,7 +2,7 @@
 /**
  * 使用axios二次封装的http请求方案flyio，http.js是基础拦截器
  * 参考：https://juejin.im/post/59ed8813f265da430b7a66cc
- * 李啸竹
+ * @author 李啸竹
  */
 import Vue from "vue";
 import fly from "flyio";

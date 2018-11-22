@@ -3,7 +3,7 @@
  * 组装actions.js、getters.js、modeles/XX.js 统一导出
  * 每个模块里面都有例子，可以结合使用
  * 参考:https://www.jianshu.com/p/a6a8ffea227d
- * 李啸竹
+ * @author 李啸竹
  */
 import Vue from 'vue'
 import Vuex from 'vuex'
