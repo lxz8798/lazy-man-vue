@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /**
 *推荐大家使用sass，因为sass比less功能更强大，比如
 *sass 有作用域、变量、函数的概念@function、@return 可以像写js一样写css
@@ -9,12 +10,7 @@
 /** 
 * html里面fontsize的字体，750设计稿宽度,1rem相当于100px
 */
-$FontSize750: 13.33333333vw;
 /*
 * 560设计稿宽度，如果有其他屏幕可以自己新增，然后App.vue里面做@media
 * 1rem相当于54px
 */
-$FontSize560: 54px;
-
-// 基础dom宽度
-$childBaseWidth: 100%;

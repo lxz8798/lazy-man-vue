@@ -6,15 +6,17 @@
 </template>
 
 <style lang="scss">
+@import "../../assets/base/base";
 $HeaderHeight: .8rem;
 div.Header-wrap {
+  width: $childBaseWidth;
   height: $HeaderHeight;
 
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
-  
-  border-bottom:1px solid #cecece;
+
+  border-bottom: 1px solid #cecece;
 }
 </style>
 

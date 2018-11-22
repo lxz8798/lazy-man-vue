@@ -6,12 +6,14 @@
 </template>
 
 <style lang="scss">
-$FooterHeight: 2rem;
+@import "../../assets/base/base";
+$FooterHeight: 1.5rem;
 div.Footer-wrap {
   position: fixed;
   bottom: 0;
   left: 0;
 
+  width: $childBaseWidth;
   height: $FooterHeight;
 
   display: flex;

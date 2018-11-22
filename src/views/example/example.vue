@@ -35,7 +35,7 @@
 @import "./../../assets/base/base.scss";
 @import "./../../assets/base/fn.scss";
 div.example-wrap {
-  width: $boxWidth;
+  width: $childBaseWidth;
   display: flex;
   flex-direction: column;
   justify-content: center;
