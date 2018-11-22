@@ -15,13 +15,11 @@
 
 <style lang="scss">
 @import "./assets/base/base";
-@media screen and (min-width: 560px){
-  html {
+html {
+  @media screen and (min-width: 560px) {
     font-size: $FontSize560;
   }
-}
-@media screen and (max-width: 750px) {
-  html {
+  @media screen and (max-width: 750px) {
     font-size: $FontSize750;
   }
 }
