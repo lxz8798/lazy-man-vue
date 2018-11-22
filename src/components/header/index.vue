@@ -7,7 +7,7 @@
 
 <style lang="scss">
 @import "../../assets/base/base";
-$HeaderHeight: .8rem;
+$HeaderHeight: 0.8rem;
 div.Header-wrap {
   width: $childBaseWidth;
   height: $HeaderHeight;

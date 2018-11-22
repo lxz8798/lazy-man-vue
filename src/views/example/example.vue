@@ -40,7 +40,7 @@ div.example-wrap {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid #666;
+  border: 10px solid #cecece;
   margin: 0 auto;
   transform: translateY(20%);
   @include border-radius(5px);

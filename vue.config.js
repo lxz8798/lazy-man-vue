@@ -55,7 +55,7 @@ module.exports = {
     // 是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码 (在生产构建时禁用 eslint-loader)
     lintOnSave: process.env.NODE_ENV !== 'production',
     // 是否使用包含运行时编译器的Vue核心的构建，热重启
-    runtimeCompiler: true,
+    // runtimeCompiler: true,
     // 生产环境是否生成 sourceMap 文件
     productionSourceMap:false,
     // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性（注：仅影响构建时注入的标签）
@@ -88,7 +88,7 @@ module.exports = {
     // 配置高于chianWebpack中的关于 css loader的配置
     css: { // 配置高于chainWebpack中关于css loader的配置
         extract: true,// 是否使用css分离插件 ExtractTextPlugin
-        modules: true, // 是否开启支持‘foo.module.css’样式
+        modules: false, // 是否开启支持‘foo.module.css’样式
         // extract: true, // 是否使用css分离插件 ExtractTextPlugin，采用独立样式文件载入，不采用<style>方式内联至html文件中
         sourceMap: false, // 是否在构建样式地图，false将提高构建速度
         loaderOptions: {  //向 CSS 相关的 loader 传递选项(支持 css-loader postcss-loader sass-loader less-loader stylus-loader)
