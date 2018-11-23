@@ -5,6 +5,7 @@
  */
 import Vue from "vue";
 import VueRouter from "vue-router";
+import Home from "./views/home/Home"
 
 Vue.use(VueRouter);
 
@@ -17,7 +18,7 @@ const router = new VueRouter({
     {
       path: "/",
       name: "home",
-      component:getComponent("home"),
+      component:Home,
       meta: {
         auth: false,
         keepAlive:false // 是否缓存

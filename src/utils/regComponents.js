@@ -1,7 +1,8 @@
 /* eslint-disable */
-/**
- * 全局组件集中管理
- * @author 李啸竹
+/*
+ * @Description: 
+ * @Author: 李啸竹
+ * @Date: 2018-11-22 09:16:41
  */
 import Header from "../components/header";
 import Footer from "../components/footer";

@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * 多环境配置
  * @process.env.NODE_ENV 判断当前环境对baseUrl进行赋值
@@ -9,14 +10,14 @@ let baseUrl = "";
 
 switch (process.env.NODE_ENV) {
     case 'development':
-    baseUrl = "/api"
-    break;
+        baseUrl = "/api"
+        break;
     case 'test':
-    baseUrl = "http://test.development.com";
-    break;
+        baseUrl = "http://test.development.com";
+        break;
     case 'demo':
-    baseUrl = "http://demo.development.com";
-    break;
+        baseUrl = "http://demo.development.com";
+        break;
 }
 
-export default baseUrl
+export default baseUrl;

@@ -1,3 +1,4 @@
+/* eslint-disable */
 /**
  * 简化API操作的封闭
  * @url 接口名称，也可以带上query
@@ -44,7 +45,7 @@ export default {
                 let formData = {
                     file: fs.createReadStream('') //文件
                 }
-                res = fly.upload(url,formData);
+                res = fly.upload(url, formData);
                 return res;
             default:
                 res = fly.type(url, params);
