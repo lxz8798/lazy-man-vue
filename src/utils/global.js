@@ -1,8 +1,10 @@
-/**
+/* eslint-disable */
+/*
  * 通过install可以全局注入4种方式
  * Vue.mixin、Vue.prototype、Vue.filter、Vue.directive
  * 参考 https://cn.vuejs.org/v2/guide/plugins.html
- * @author 李啸竹
+ * @Author: 李啸竹
+ * @Date: 2018-10-28 01:10:12
  */
 export default {
     install(Vue, options) {
@@ -13,13 +15,13 @@ export default {
          * 比如用在结果都返回之前只显示loading的时候
          * @author 李啸竹
          */
-        Vue.prototype.$All = function (obj) {            
-            Promise.all([...obj]).then(result=>{
+        Vue.prototype.$All = function (obj) {
+            Promise.all([...obj]).then(result => {
                 console.log(result);
             })
             .catch(error => {
                 console.error(error);
-            })
+            });
         };
     }
-}
+};
