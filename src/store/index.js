@@ -1,23 +1,18 @@
-/* eslint-disable */
-/**
- * 组装actions.js、getters.js、modeles/XX.js 统一导出
- * 每个模块里面都有例子，可以结合使用
- * 参考:https://www.jianshu.com/p/a6a8ffea227d
- * @author 李啸竹
+/*
+ * @Description: Store
+ * @Author: 李啸竹
+ * @Date: 2018-12-04 13:30:10
  */
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from "vue";
+import Vuex from "vuex";
+import homeStore from "./modules";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
-import getters from './getters'
-import actions from './actions'
-import aModules from './modules/aModules'
-// 导出 store 对象
-export default new Vuex.Store({
-    getters,
-    actions,
-    modules: {
-        aModules
-    }
+const store = new Vuex.Store({
+  modules: {
+    home: homeStore
+  }
 });
+
+export default store;

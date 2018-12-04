@@ -16,7 +16,6 @@
             <span>{{'生日：'+item.birthday}}</span>
             <span>{{'城市：'+item.city}}</span>
             <span>{{'count:'+count}}</span>
-            <span>{{'isEvenOrOdd:'+isEvenOrOdd}}</span>
           </li>
           <li></li>
         </ul>
@@ -92,7 +91,7 @@ div.example-wrap {
 // 需要模拟数据的地方需要引入mock.js
 import { Modal, Upload, Button } from "iview";
 import exampleApi from "@/api/example";
-import { mapState, mapGetters, mapActions } from "vuex";
+import { mapState, mapActions, mapGetters } from 'vuex'
 export default {
   name: "examplePage",
   components: { Modal, Upload, Button },
@@ -111,8 +110,10 @@ export default {
     // this.testPromiseAll();
   },
   computed: {
-    ...mapGetters(["count", "isEvenOrOdd"]),
-    ...mapState({ count: state => state.aModules.count })
+    ...mapGetters(["count"]),
+    ...mapState({
+      count: state => state.home.count
+    })
   },
   methods: {
     ...mapActions(["increment", "decrement", "incrementAsync"]),
