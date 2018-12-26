@@ -1,0 +1,78 @@
+{
+  "pages": [
+    {
+      "path": "pages/top/index",
+      "style": {
+        "navigationBarTitleText": "排行"
+      }
+    },
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "书架"
+      }
+    },
+    {
+      "path": "pages/selected/index",
+      "style": {
+        "navigationBarTitleText": "精选"
+      }
+    },
+    {
+      "path": "pages/category/index",
+      "style": {
+        "navigationBarTitleText": "分类"
+      }
+    },
+    {
+      "path": "pages/my/index",
+      "style": {
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "什嘛小说",
+    "navigationBarBackgroundColor": "#14A9DB",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#14A9DB",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "书架",
+        "iconPath": "static/icon/book.png",
+        "selectedIconPath": "static/icon/book-active.png"
+      },
+      {
+        "pagePath": "pages/selected/index",
+        "text": "精选",
+        "iconPath": "static/icon/selected.png",
+        "selectedIconPath": "static/icon/selected-active.png"
+      },
+      {
+        "pagePath": "pages/top/index",
+        "text": "排行",
+        "iconPath": "static/icon/top.png",
+        "selectedIconPath": "static/icon/top-active.png"
+      },
+      {
+        "pagePath": "pages/category/index",
+        "text": "分类",
+        "iconPath": "static/icon/category.png",
+        "selectedIconPath": "static/icon/category-active.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "static/icon/my.png",
+        "selectedIconPath": "static/icon/my-active.png"
+      }
+    ]
+  }
+}

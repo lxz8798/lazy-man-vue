@@ -1,63 +1,30 @@
 {
-  "name": "app2",
+  "name": "try-bookmall",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test": "vue-cli-service serve --mode test",
-    "demo": "vue-cli-service serve --mode demo",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
-    "amfe-flexible": "^2.2.1",
-    "babel-plugin-import": "^1.10.0",
+    "@dcloudio/uni-h5": "*",
     "flyio": "^0.6.2",
-    "glob": "^7.1.3",
-    "iview": "^3.1.3",
     "lodash": "^4.17.11",
-    "node-sass": "^4.9.4",
-    "normalize.css": "^8.0.0",
-    "sass-loader": "^7.1.0",
     "vue": "^2.5.17",
-    "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "rules": {
-      "generator-star-spacing": "off",
-      "no-unused-vars": "off",
-      "quotes": "off"
-    },
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.4",
-    "@vue/cli-plugin-eslint": "^3.0.4",
-    "@vue/cli-plugin-unit-jest": "^3.0.4",
-    "@vue/cli-service": "^3.0.4",
-    "@vue/eslint-config-prettier": "^3.0.5",
-    "@vue/test-utils": "^1.0.0-beta.20",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^23.0.1",
-    "compass-mixins": "^0.12.10",
-    "compression-webpack-plugin": "^2.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "mockjs": "^1.0.1-beta3",
-    "purify-css": "^1.2.5",
-    "purifycss-webpack": "^0.7.0",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "vue-template-compiler": "^2.5.17"
-  }
+    "@dcloudio/vue-cli-plugin-uni": "*",
+    "@vue/cli-plugin-babel": "3.1.1",
+    "@vue/cli-service": "^3.2.0",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.27.0"
+  },
+  "browserslist": [
+    "last 3 versions",
+    "Android >= 4.4",
+    "ios >= 8"
+  ]
 }
