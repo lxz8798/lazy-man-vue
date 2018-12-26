@@ -4,7 +4,9 @@
  * @Date: 2018-12-05 09:47:11
  -->
 <template>
-	<view></view>
+<view class="mall_wrap">
+
+</view>
 </template>
 
 <style lang="scss">
