@@ -44,22 +44,22 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "pagePath": "pages/top/index",
+        "text": "排行",
+        "iconPath": "static/icon/top.png",
+        "selectedIconPath": "static/icon/top-active.png"
+      },
+      {
         "pagePath": "pages/index/index",
         "text": "书架",
-        "iconPath": "static/icon/books.png",
-        "selectedIconPath": "static/icon/books-active.png"
+        "iconPath": "static/icon/book.png",
+        "selectedIconPath": "static/icon/book-active.png"
       },
       {
         "pagePath": "pages/selected/index",
         "text": "精选",
         "iconPath": "static/icon/selected.png",
         "selectedIconPath": "static/icon/selected-active.png"
-      },
-      {
-        "pagePath": "pages/top/index",
-        "text": "排行",
-        "iconPath": "static/icon/top.png",
-        "selectedIconPath": "static/icon/top-active.png"
       },
       {
         "pagePath": "pages/category/index",
