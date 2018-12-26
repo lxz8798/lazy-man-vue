@@ -1,12 +1,6 @@
 {
   "pages": [
     {
-      "path": "pages/top/index",
-      "style": {
-        "navigationBarTitleText": "排行"
-      }
-    },
-    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "书架"
@@ -16,6 +10,12 @@
       "path": "pages/selected/index",
       "style": {
         "navigationBarTitleText": "精选"
+      }
+    },
+    {
+      "path": "pages/top/index",
+      "style": {
+        "navigationBarTitleText": "排行"
       }
     },
     {
@@ -46,8 +46,8 @@
       {
         "pagePath": "pages/index/index",
         "text": "书架",
-        "iconPath": "static/icon/book.png",
-        "selectedIconPath": "static/icon/book-active.png"
+        "iconPath": "static/icon/books.png",
+        "selectedIconPath": "static/icon/books-active.png"
       },
       {
         "pagePath": "pages/selected/index",
