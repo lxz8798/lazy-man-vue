@@ -4,9 +4,9 @@
  * 参考：https://juejin.im/post/59ed8813f265da430b7a66cc
  * @author 李啸竹
  */
-// import Vue from "vue";
-const Fly=require("flyio/dist/npm/fly");
-const fly=new Fly;
+import Vue from "vue";
+import fly from "flyio";
+import baseUrl from "./../build/setBserUrl";
 // 基本配置
 //定义公共headers
 fly.config.headers = { "Content-Type": "application/x-www-form-urlencoded" };
@@ -47,7 +47,7 @@ fly.interceptors.request.use((request, promise) => {
 
 // 添加响应拦截器
 fly.interceptors.response.use((response, promise) => {
-//     // 将请求结果返回
+    // 将请求结果返回
     return response.data;
  }, error => {
     return Promise.reject(error);

@@ -1,0 +1,40 @@
+/**
+*推荐大家使用sass，因为sass比less功能更强大，比如
+*sass 有作用域、变量、函数的概念@function、@return 可以像写js一样写css
+*有进程控制@if @else、循环@for @each @while 继承@extend
+*以"_"开头的局部文件,不会被编译到css;作为引入文件使用;
+*参考：http://compass-style.org/reference/compass/css3/
+*基础用法：https://www.cnblogs.com/yizihan/p/4427900.html
+*/
+/** 
+* html里面fontsize的字体，750设计稿宽度,1rem相当于100px
+*/
+@import "./color";
+@import "./defaultVar";
+@import "./mixin";
+@import "./animation";
+@import "./shape";
+// 全屏宽度
+$childBaseWidth: 100vw;
+$childBaseHeight: 100vh;
+// 盒子宽度
+$boxWidth: 12rem;
+// 间隔
+$spancin: 0.1rem;
+$distanceHeader: 0.6rem;
+// 字体大小
+$iconSize: 0.17rem;
+html {
+  font-size: 100px !important;
+  color: $fontColor;  
+}
+h1,
+h2,
+h3,
+h4 {
+  font-size: $iconSize;
+  color: darken($fontColor, 20%)
+}
+ul,li {
+  list-style-type: none;
+}

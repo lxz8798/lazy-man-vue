@@ -1,7 +1,9 @@
 module.exports = {
-	presets: [
-		['@vue/app', {
-			useBuiltIns: 'entry'
-		}]
-	]
-}
+  presets: ["@vue/app"],
+  plugins: [
+    ["import", {
+      "libraryName": "iview",
+      "libraryDirectory": "src/components"
+    }]
+  ]
+};

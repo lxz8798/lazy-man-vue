@@ -1,0 +1,123 @@
+@import "defaultVar";
+@keyframes cloudTranslateAnimate
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(-1rem, -1rem, 0.1rem);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(14rem, 1rem, 2rem);
+  }
+}
+@keyframes cloudTranslateAnimate2
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(12rem, 0, 0.1rem);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-1rem, 0, 1.5rem);
+  }
+}
+@keyframes cloudTranslateAnimate3
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(-1rem, 0, 0.1rem) skew(1deg, 0);
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(6rem, 1rem, 0.2rem) skew(-60deg, 10deg);
+  }
+}
+@keyframes cloudTranslateAnimate4
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(-1rem, 2rem, 0.1rem);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(10rem, 1rem, 1.5rem);
+  }
+}
+@keyframes cloudTranslateAnimate5
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(-1rem, 0.5rem, 0.1rem);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(12rem, 0.8rem, 1.5rem);
+  }
+}
+@keyframes cloudTranslateAnimate6
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(10rem, 0.5rem, 0);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-1rem, 0.8rem, 0);
+  }
+}
+@keyframes cloudTranslateAnimate7
+{
+  0% { 
+    opacity: 0;
+    transform: translate3d(10rem, 3rem, 1rem);
+  }
+  5% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(3rem, 1rem, -1rem);
+  }
+}
+@mixin translateAnimate($name, $time, $delay: $Delay) {
+  animation: $name $time $type $delay $count $direction;
+}

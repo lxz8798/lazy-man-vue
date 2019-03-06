@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 
-	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-		<title>
-			<%= htmlWebpackPlugin.options.title %>
-		</title>
-		<script>
-			document.addEventListener('DOMContentLoaded', function() {
-				document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
-			})
-		</script>
-    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.baseUrl %>static/index.css" />
-    <link rel="stylesheet" href="//at.alicdn.com/t/font_951049_zvk9belm70l.css
-    ">
-	</head>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>
+		<%= htmlWebpackPlugin.options.title %>
+	</title>
+	<!-- 给html自动增加font-size，如果有需要可以开启 -->
+	<!-- <script>
+		document.addEventListener('DOMContentLoaded', function () {
+			document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
+		})
+	</script> -->
+	<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.baseUrl %>static/index.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css" async>
+</head>
 
-	<body>
-		<noscript>
-			<strong>Please enable JavaScript to continue.</strong>
-		</noscript>
-		<div id="app"></div>
-		<!-- built files will be auto injected -->
-	</body>
+<body>
+	<noscript>
+		<strong>Please enable JavaScript to continue.</strong>
+	</noscript>
+	<div id="app"></div>
+	<!-- built files will be auto injected -->
+</body>
 
 </html>
