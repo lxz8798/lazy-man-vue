@@ -4,6 +4,11 @@ module.exports = {
     ["import", {
       "libraryName": "iview",
       "libraryDirectory": "src/components"
-    }]
+    }],
+    ['import', {
+      "libraryName": 'vant',
+      "libraryDirectory": 'es',
+      "style": true
+    }, 'vant']
   ]
 };

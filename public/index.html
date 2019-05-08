@@ -5,15 +5,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>
-		<%= htmlWebpackPlugin.options.title %>
-	</title>
-	<!-- 给html自动增加font-size，如果有需要可以开启 -->
-	<!-- <script>
-		document.addEventListener('DOMContentLoaded', function () {
-			document.documentElement.style.fontSize = document.documentElement.clientWidth / 20 + 'px'
-		})
-	</script> -->
+	<title><%= htmlWebpackPlugin.options.title %></title>
 	<link rel="stylesheet" href="<%= htmlWebpackPlugin.options.baseUrl %>static/index.css" />
   <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css" async>
 </head>
@@ -24,6 +16,13 @@
 	</noscript>
 	<div id="app"></div>
 	<!-- built files will be auto injected -->
+	<script>
+		// 根据屏幕变化自动设置fontsize
+		window.addEventListener('resize', () => {
+			let w = document.documentElement.clientWidth || document.body.clientWidth;
+			let $dom = document.querySelector('html');
+			$dom.style.fontSize = w / 10 + 'px'
+		})
+	</script>
 </body>
-
 </html>

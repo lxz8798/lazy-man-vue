@@ -25,14 +25,12 @@ $distanceHeader: 0.6rem;
 // 字体大小
 $iconSize: 0.17rem;
 html {
-  font-size: 100px !important;
   color: $fontColor;  
 }
 h1,
 h2,
 h3,
 h4 {
-  font-size: $iconSize;
   color: darken($fontColor, 20%)
 }
 ul,li {

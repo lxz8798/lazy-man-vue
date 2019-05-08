@@ -58,6 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/base/mixin";
 .first_box_wrap {
   width: 90vw;
   height: 90vh;
@@ -67,7 +68,7 @@ export default {
   align-items: center;
   h5,
   p {
-    font-size: 0.16rem;
+    font-size: px2rem(14px);
   }
   h5 {
     font-size: 0.4rem;
