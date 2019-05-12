@@ -97,11 +97,29 @@ export default {
     };
   },
   created() {
+    console.log(this.$route.params.id,'params')
     // this.getTesAll();
-    this.getTestData();
+    // this.getTestData();
     // this.getTestDataDetail();
-    this.getMockData();
+    // this.getMockData();
     // this.testPromiseAll();
+  },
+  watch: {
+    '$route'(to, from) {
+      console.log(to,'route to');
+      console.log(from,'route from');
+    }
+  },
+  /**
+   * @Description: 监听动态路由变化
+   * @Author: 李啸竹
+   * @param {type} [object Object]
+   * @Date: 2019-05-12 22:24:35
+   */
+  beforeRouteUpdata(to, from, next){
+    console.log(to,'to');
+    console.log(from,'from');
+    console.log(next,'next');
   },
   mounted() {
     this.$Loading.finish();
