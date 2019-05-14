@@ -5,6 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "build:test": "vue-cli-service build & xcopy /fy \"./config_dev/config_test.js\" \"dist/config.js\"",
+    "build:demo": "vue-cli-service build & xcopy /fy \"./config_dev/config_demo.js\" \"dist/config.js\"",
+    "build:production": "vue-cli-service build & xcopy /fy \"./config_dev/config.js\" \"dist/config.js\"",
     "test": "vue-cli-service serve --mode test",
     "demo": "vue-cli-service serve --mode demo",
     "lint": "vue-cli-service lint",
