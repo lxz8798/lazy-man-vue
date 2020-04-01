@@ -1,7 +1,11 @@
+<!--
+ * @Description: 
+ * @Author: 李啸竹
+ * @Date: 2018-10-24 23:29:57
+ -->
 <template>
   <!-- footer 公共组件 -->
-  <footer class="Footer_wrap">
-  </footer>
+  <footer class="Footer_wrap"></footer>
 </template>
 
 <style lang="scss">

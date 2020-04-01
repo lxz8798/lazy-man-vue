@@ -8,7 +8,7 @@
  * 详情请参考https://www.jianshu.com/p/99915695267a
  * @author 李啸竹
  */
-import fly from "flyio";
+import axios from "axios";
 import qs from "qs";
 import fs from "fs";
 
@@ -25,16 +25,16 @@ export default {
         }
         switch (type) {
             case "get":
-                res = fly.get(url, params);
+                res = axios.get(url, params);
                 return res;
             case "post":
-                res = fly.post(url, params);
+                res = axios.post(url, params);
                 return res;
             case "request":
-                res = fly.request(url, params);
+                res = axios.request(url, params);
                 return res;
             case "all":
-                res = fly.all([url]).then(fly.spread((records, projects) => {
+                res = axios.all([url]).then(axios.spread((records, projects) => {
                     return records
                 }))
                     .catch(error => {
@@ -45,10 +45,10 @@ export default {
                 let formData = {
                     file: fs.createReadStream('') //文件
                 }
-                res = fly.upload(url, formData);
+                res = axios.upload(url, formData);
                 return res;
             default:
-                res = fly.type(url, params);
+                res = axios.type(url, params);
                 break;
         };
     }

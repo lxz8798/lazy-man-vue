@@ -29,7 +29,7 @@ const router = new VueRouter({
       }
     },
     {
-      path: "/example/:id",
+      path: "/example",
       name: 'example',
       component: getComponent("example"),
       meta: {

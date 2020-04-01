@@ -9,7 +9,7 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store/index";
 import _ from "lodash";
-import fly from "./http";
+import http from "./http";
 import normalize from "normalize.css";
 import global from "./utils/global";
 import api from "./api/api";
@@ -19,14 +19,13 @@ Vue.use(_);
 Vue.use(normalize);
 Vue.use(global);
 Vue.use(api);
-Vue.use(fly);
 Vue.use(regCopm);
 
 process.env.NODE_ENV === "development";
 
 Vue.config.productionTip = false;
 
-Vue.prototype.$http = fly;
+Vue.prototype.$http = http;
 Vue.prototype._ = _;
 Vue.prototype.$api = api;
 
