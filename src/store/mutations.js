@@ -1,4 +1,4 @@
-import { HOME_CURR_PUBLIC_WIDTH, HAS_H5 } from "./mutation-types";
+import { HOME_CURR_PUBLIC_WIDTH } from "./mutation-types";
 
 const mutations = {};
 

@@ -6,18 +6,21 @@
  */
 import Vue from "vue";
 import App from "./App.vue";
-import router from "./router";
+import router from "./router/";
 import store from "./store/index";
 import _ from "lodash";
 import http from "./http";
-import normalize from "normalize.css";
-import global from "./utils/global";
-import api from "./api/api";
+import utils from "./utils/";
+import api from "./api/";
+import echarts from "echarts";
 import regCopm from "./utils/regComponents";
+import "@/components/autoInject.js";
+import "./api/fakeApi";
+import "normalize.css/normalize.css";
+import "lib-flexible";
 
 Vue.use(_);
-Vue.use(normalize);
-Vue.use(global);
+Vue.use(utils);
 Vue.use(api);
 Vue.use(regCopm);
 
@@ -28,6 +31,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$http = http;
 Vue.prototype._ = _;
 Vue.prototype.$api = api;
+Vue.prototype.$echarts = echarts;
 
 new Vue({
   router,

@@ -18,6 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
+@import "./assets/base/_mixin.scss";
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif, "MSYH";
   -webkit-font-smoothing: antialiased;

@@ -1,51 +1,60 @@
 <template>
-  <section class="home_screen_wrap">
+  <section :class="name">
     <!-- 公共头部 -->
-    <Header :active="active"></Header>
+    <Header :active="active" v-if="$route.meta.showHead"></Header>
     <!-- 第一屏内容 -->
     <section class="first_box_wrap" ref="firstBox">
       <!-- 内容 -->
-      <h5>这里是基于vue-cli3.0封装的基础项目骨架</h5>
-      <p>默认安装了很多实用插件,如：lodash、normalize.css</p>
-      <p>项目骨架内使用vw、vh定义宽高、使用rem为基础单位</p>
-      <p>使用normalize.css初始化了浏览器样式</p>
-      <p>iview采用按需的方式</p>
-      <p>regCopm为公共组件注册方法，直接使用即可</p>
-      <p>使用fly代码了axios，当然，如果你想使用axios也可以</p>
+      <h5>为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。</h5>
       <p>
-        api是一个简单的api管理，直接返回一个promise，页面内使用async、await,具体可以查看/example
+        1、使用normalize.css初始化了浏览器样式，默认集成lodash、mockjs、echarts等等
       </p>
       <p>
-        vue.config.js里面默认开启了gzip和其他的一些优化配置，详情可看注释自定义配置
+        2、项目骨架内使用vw、vh定义宽高、使用rem/px为基础单位，使用rem可以适配屏幕，px则不会。
       </p>
-      <p>预留了一个global方法作为全局方法输出</p>
-      <p>默认开启iview的loadingBar，如果需要自定义的loading请自行配置</p>
       <p>
-        针对移动端也做了很多优化，当然，如果想要完全适配肯定是需要自己做个勤劳的码农的
+        3、内嵌iView采用按需的方式
       </p>
-      <p>还有很多隐藏功能，可以自行研究</p>
-      <p>基于该骨架开发项目已经有</p>
-      <div class="link">
-        <a href="http://develop.kingchannels.cn:50013">众知 | </a>
-        <a href="http://develop.kingchannels.cn:50039"
-          >版权知识加工标准系统 |
-        </a>
-        <a href="http://v3.lazy-studio.com">我的个人主页3.0</a>
-      </div>
+      <p>
+        4、components下的common，以public开头的组件会自动注册
+      </p>
+      <p>
+        5、api是一个简单的api管理，直接返回一个promise，页面内使用async、await,具体可以查看/example
+      </p>
+      <p>
+        6、vue.config.js里面默认开启了gzip和其他的一些优化配置，详情可看注释自定义配置
+      </p>
+      <p>
+        7、内置了一些工具方法，可以直接this.fn使用
+      </p>
+      <p>
+        8、默认开启iview的loadingBar，如果需要自定义的loading请自行配置
+      </p>
+      <p>
+        还有更多操作请自行发掘
+      </p>
+      <p>
+        骨架会不定期更新更多优化内容
+      </p>
+      <p>
+        ......
+      </p>
     </section>
     <!-- 公共底部 -->
-    <Footer></Footer>
+    <Footer v-if="$route.meta.showFooter"></Footer>
     <!-- 模态框 -->
     <Modal v-model="loading"></Modal>
   </section>
 </template>
 <script>
+const name = "home_wrap";
 import { Modal } from "iview";
 export default {
   components: { Modal },
   name: "home",
   data() {
     return {
+      name: name,
       active: 0,
       loading: false
     };
@@ -58,23 +67,26 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/base/mixin";
-.first_box_wrap {
-  width: 90vw;
-  height: 90vh;
+.home_wrap {
+  width: $childBaseWidth; // 变量的设置可以参考base.scss
+  height: $childBaseHeight;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  h5,
-  p {
-    font-size: px2rem(14px);
-  }
-  h5 {
-    font-size: 0.4rem;
-    padding: 0;
-    margin: 0;
-    line-height: 160%;
+  .first_box_wrap {
+    width: 75%;
+    height: 50%;
+    h5,
+    p {
+      font-size: 12px;
+    }
+    h5 {
+      font-size: 14px;
+      padding: 0;
+      margin: 0;
+      line-height: 160%;
+    }
   }
 }
 </style>

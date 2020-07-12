@@ -30,8 +30,6 @@
 </template>
 
 <style lang="scss">
-@import "compass/css3";
-@import "./../../assets/base/base.scss";
 div.example-wrap {
   width: $childBaseWidth;
   height: $childBaseHeight - 20vh;
@@ -82,13 +80,13 @@ div.example-wrap {
 
 <script>
 /* eslint-disable */
-// 需要模拟数据的地方需要引入mock.js
 import { Modal, Upload, Button } from "iview";
+import dialogManage from "@/components/dialogs/"
 import exampleApi from "@/api/example";
 import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "examplePage",
-  components: { Modal, Upload, Button },
+  components: { Modal, Upload, Button, dialogManage },
   data() {
     return {
       msg: "点击我打开iview弹窗!",
@@ -97,12 +95,8 @@ export default {
     };
   },
   created() {
-    console.log(this.$route.params.id,'params')
-    // this.getTesAll();
-    // this.getTestData();
-    // this.getTestDataDetail();
-    // this.getMockData();
-    // this.testPromiseAll();
+    // console.log(this.$route.params.id,'params')
+    this.getMockData();
   },
   watch: {
     '$route'(to, from) {
@@ -133,68 +127,14 @@ export default {
   methods: {
     ...mapActions(["increment", "decrement", "incrementAsync"]),
     /**
-     * 来自聚合数据的真实请求
-     * 并发请求的测试
-     * @author 李啸竹
-     */
-    async getTesAll() {
-      let params, res;
-
-      res = await exampleApi.categroyAll();
-    },
-    /**
-     * 来自聚合数据的真实请求
-     * @author 李啸竹
-     */
-    async getTestDataDetail() {
-      let params, res;
-      params = {
-        key: "719af00cc3a686d1f23d0e91e698da29",
-        catalog_id: 257,
-        pn: 1,
-        rn: 10
-      };
-      res = await exampleApi.categroyDetail();
-    },
-    /**
-     * 来自聚合数据的真实请求
-     * @author 李啸竹
-     */
-    async getTestData() {
-      let params, res;
-      params = {
-        key: "719af00cc3a686d1f23d0e91e698da29",
-        dtype: "json"
-      };
-      res = await exampleApi.categroyList(params);
-    },
-    /**
      * 来自mockjs的模拟数据
      * @author 李啸竹
      */
     async getMockData() {
-      let params, res;
       // 使用jquery方式获得mockjs数据
-      res = await $.ajax({ url: "http://1.json/list", dataType: "json" });
-
-      this.dataList = res.data;
-    },
-    /**
-     * 使用Promise.all 集中处理
-     * @author 李啸竹
-     */
-    testPromiseAll() {
-      let p1 = new Promise((resolve, reject) => {
-        resolve("成功了");
-      });
-
-      let p2 = new Promise((resolve, reject) => {
-        resolve("success");
-      });
-
-      // let p3 = Promise.reject("失败");
-
-      this.$All([p1, p2]);
+      const params = {}
+      const res = await this.$http.get('/fake/v1/users');
+      console.log(res, 'res')
     }
   }
 };
