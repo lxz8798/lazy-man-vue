@@ -1,0 +1,8 @@
+@import "defaultVar";
+@function px2rem($px){
+  $rem:37.5px;
+  @return ($px / $rem) + rem;
+}
+@mixin translateAnimate($name, $time, $delay: $Delay) {
+  animation: $name $time $type $delay $count $direction;
+}
