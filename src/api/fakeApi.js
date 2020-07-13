@@ -19,11 +19,13 @@ Mock.mock('http://localhost:8080/fake/v1/login', 'post', option => {
 // 用户数据
 const userData = () => {
     let users = []
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 5; i++) {
       let user = {
         'id': i + 1,
-        'date': Random.date('yyyy-MM-dd'),
         'name': Random.cname(),
+        'age|18-28': 0,
+        "sex|1-2": true,
+        'birthday': Random.date('yyyy-MM-dd'),
         'address': Mock.mock('@county(true)'),
         'phone': Mock.mock(/^1[0-9]{10}$/),
         'status': Random.integer(0, 1)
@@ -32,4 +34,4 @@ const userData = () => {
     }
     return users
 }
-Mock.mock('http://localhost:8080/fake/v1/users', userData)
+Mock.mock(`${process.env.VUE_APP_BASE_URL}/fake/v1/users`, userData)

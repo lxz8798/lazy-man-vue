@@ -3,13 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:test": "vue-cli-service build & xcopy /fy \"./config_dev/config_test.js\" \"dist/config.js\"",
-    "build:demo": "vue-cli-service build & xcopy /fy \"./config_dev/config_demo.js\" \"dist/config.js\"",
-    "build:production": "vue-cli-service build & xcopy /fy \"./config_dev/config.js\" \"dist/config.js\"",
+    "serve": "vue-cli-service serve --mode development --progress --color",
     "test": "vue-cli-service serve --mode test",
     "demo": "vue-cli-service serve --mode demo",
+    "build": "vue-cli-service build --mode production --progress --color",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },

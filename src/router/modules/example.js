@@ -6,8 +6,8 @@ export default [
       component: exampleComponent("example"),
       meta: {
         auth: true,
-        showHead: true,
-        showFooter: true,
+        showHead: false,
+        showFooter: false,
         activeIcon: "example"
       }
     }
