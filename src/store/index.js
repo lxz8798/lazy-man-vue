@@ -3,10 +3,10 @@
  * @Author: 李啸竹
  * @Date: 2018-12-04 13:30:10
  */
-import Vue from "vue";
-import Vuex from "vuex";
+// import Vue from "vue";
+// import Vuex from "vuex";
 
-Vue.use(Vuex);
+// Vue.use(Vuex);
 
 import state from "./state";
 import getters from "./getters";

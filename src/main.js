@@ -4,11 +4,11 @@
  * 后期通过配置文件把大文件加入cdn，缩小打包体积
  * @author 李啸竹
  */
-import Vue from "vue";
+// import Vue from "vue";
 import router from "./router/";
 import App from "./App.vue";
 import store from "./store/index";
-import _ from "lodash";
+// import _ from "lodash";
 import http from "./http";
 import utils from "./utils/";
 import api from "./api/";
@@ -20,7 +20,7 @@ import "./api/fakeApi";
 import "normalize.css/normalize.css";
 import "lib-flexible";
 
-Vue.use(_);
+// Vue.use(_);
 Vue.use(api);
 Vue.use(utils);
 Vue.use(regCopm);

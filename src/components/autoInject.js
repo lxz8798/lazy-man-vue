@@ -1,5 +1,5 @@
 // 全局自动注册common开头的公共组件
-import Vue from "vue";
+// import Vue from "vue";
 import upperFirst from "lodash/upperFirst";
 import camelCase from "lodash/camelCase";
 

@@ -3,7 +3,7 @@
  * 路由，引入路由懒加载，如果有需要的话可以解开注释
  * @author 李啸竹
  */
-import Vue from "vue";
+// import Vue from "vue";
 import VueRouter from "vue-router";
 import { LoadingBar } from "iview";
 import home from "./modules/home";

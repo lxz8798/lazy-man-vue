@@ -21,6 +21,7 @@ const cdn = {
       'https://s2.pstatp.com/cdn/expire-1-M/vuex/3.1.0/vuex.min.js',
       'https://s2.pstatp.com/cdn/expire-1-M/axios/0.19.0-beta.1/axios.min.js',
       'https://s1.pstatp.com/cdn/expire-1-M/moment.js/2.24.0/moment.min.js',
+      'https://s2.pstatp.com/cdn/expire-1-M/lodash.js/4.17.12-pre/lodash.min.js'
   ]
 }
 
@@ -108,29 +109,9 @@ module.exports = {
       config.externals = {
         'vue': 'Vue',
         'vuex': 'Vuex',
-        'axios': 'axios'
+        'axios': 'axios',
+        'lodash': 'lodash'
       }
-      // 开启分离js
-      // config.optimization = {
-      //   runtimeChunk: 'single',
-      //   splitChunks: {
-      //     chunks: 'all',
-      //     maxInitialRequests: Infinity,
-      //     minSize: 20000,
-      //     cacheGroups: {
-      //       vendor: {
-      //         test: /[\\/]node_modules[\\/]/,
-      //         name (module) {
-      //           // get the name. E.g. node_modules/packageName/not/this/part.js
-      //           // or node_modules/packageName
-      //           const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-      //           // npm package names are URL-safe, but some servers don't like @ symbols
-      //           return `npm.${packageName.replace('@', '')}`
-      //         }
-      //       }
-      //     }
-      //   }
-      // }
       // gzip配置
       config.plugins.push(
         new CompressionWebpackPlugin({
