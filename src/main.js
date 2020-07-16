@@ -5,8 +5,8 @@
  * @author 李啸竹
  */
 import Vue from "vue";
-import App from "./App.vue";
 import router from "./router/";
+import App from "./App.vue";
 import store from "./store/index";
 import _ from "lodash";
 import http from "./http";
@@ -14,14 +14,15 @@ import utils from "./utils/";
 import api from "./api/";
 import echarts from "echarts";
 import regCopm from "./utils/regComponents";
+import config from "../config/";
 import "@/components/autoInject.js";
 import "./api/fakeApi";
 import "normalize.css/normalize.css";
 import "lib-flexible";
 
 Vue.use(_);
-Vue.use(utils);
 Vue.use(api);
+Vue.use(utils);
 Vue.use(regCopm);
 
 process.env.NODE_ENV === "development";
@@ -32,9 +33,10 @@ Vue.prototype.$http = http;
 Vue.prototype._ = _;
 Vue.prototype.$api = api;
 Vue.prototype.$echarts = echarts;
+Vue.prototype.$config = config;
 
 new Vue({
-  router,
   store,
+  router,
   render: h => h(App)
 }).$mount("#app");

@@ -5,7 +5,7 @@
     <!-- 第一屏内容 -->
     <section class="first_box_wrap" ref="firstBox">
       <!-- 内容 -->
-      <h5>为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。</h5>
+      <h5>为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。{{this.$config.baseUrl}}</h5>
       <p>
         1、使用normalize.css初始化了浏览器样式，默认集成lodash、mockjs、echarts等等
       </p>
@@ -42,8 +42,6 @@
     </section>
     <!-- 公共底部 -->
     <Footer v-if="$route.meta.showFooter"></Footer>
-    <!-- 模态框 -->
-    <Modal v-model="loading"></Modal>
   </section>
 </template>
 <script>

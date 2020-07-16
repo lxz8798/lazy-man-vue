@@ -12,6 +12,18 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 const productionGzipExtensions = ['js', 'css'];
 const isProduction = process.env.NODE_ENV !== 'development';
 
+const cdn = {
+  css: [
+    'https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css'
+  ],
+  js: [
+      'https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.js',
+      'https://s2.pstatp.com/cdn/expire-1-M/vuex/3.1.0/vuex.min.js',
+      'https://s2.pstatp.com/cdn/expire-1-M/axios/0.19.0-beta.1/axios.min.js',
+      'https://s1.pstatp.com/cdn/expire-1-M/moment.js/2.24.0/moment.min.js',
+  ]
+}
+
 module.exports = {
   // 输出目录
   // outputDir: 'dist',
@@ -30,7 +42,7 @@ module.exports = {
       template: 'public/index.html',
       filename: 'index.html',
       title: '基于cli3.0的项目基础骨架',
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
+      // chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     // index2: {
     //   entry: 'src/main.js',
@@ -62,6 +74,7 @@ module.exports = {
     // host: '0.0.0.0',
     // https:false, // https:{type:booklen}
     // open:true, // 配置自动启动浏览器
+    compress: false, // 开启压缩
     // proxy:null,
     // 不需要可以设置为proxy:null
     // proxy: {
@@ -89,19 +102,42 @@ module.exports = {
   },
 
   configureWebpack: config => {
-    // 忽略项
-    config.externals = {
-      urlConfig: "urlConfig"
-    }
     // 生产环境相关配置
     if (isProduction) {
+      // 忽略项，如果开启下面的三项，则不打包vue、vue-router、momoent，需要从CDN之类的外站引入，需要线上支持
+      config.externals = {
+        'vue': 'Vue',
+        'vuex': 'Vuex',
+        'axios': 'axios'
+      }
+      // 开启分离js
+      // config.optimization = {
+      //   runtimeChunk: 'single',
+      //   splitChunks: {
+      //     chunks: 'all',
+      //     maxInitialRequests: Infinity,
+      //     minSize: 20000,
+      //     cacheGroups: {
+      //       vendor: {
+      //         test: /[\\/]node_modules[\\/]/,
+      //         name (module) {
+      //           // get the name. E.g. node_modules/packageName/not/this/part.js
+      //           // or node_modules/packageName
+      //           const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
+      //           // npm package names are URL-safe, but some servers don't like @ symbols
+      //           return `npm.${packageName.replace('@', '')}`
+      //         }
+      //       }
+      //     }
+      //   }
+      // }
+      // gzip配置
       config.plugins.push(
         new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
           algorithm: 'gzip',
-          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
-          threshold: 10240, // 只有大小大于该值的资源会被处理 10240
-          minRatio: 0.8, // 只有压缩率小于这个值的资源才会被处理
+          test: /\.js$|\.html$|\.json$|\.css/,
+          threshold: 10240,
+          minRatio: 0.8,
           deleteOriginalAssets: false, // 删除原文件
         })
       );
@@ -111,12 +147,17 @@ module.exports = {
   // 对内部的 webpack 配置（比如修改、增加Loader选项）(链式操作)
   // https://github.com/mozilla-neutrino/webpack-chain
   chainWebpack: config => {
+    // 为html注入cdn
+    config.plugin("html-index").tap(args => {
+      args[0].cdn = cdn
+      return args;
+    })
+    // 移除 prefetch 插件
+    config.plugins.delete('prefetch');
+    // 移除 preload 插件
+    config.plugins.delete('preload');
     // 为开发环境修改配置...
-    config.module
-      .rule('iview')
-      .test(/iview.src.*?js$/)
-      .use('babel')
-      .loader('babel-loader')
-      .end()
+    config.module.rule('iview').test(/iview.src.*?js$/).use('babel').loader('babel-loader').end();
+    
   }
 }

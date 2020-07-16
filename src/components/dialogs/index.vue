@@ -1,6 +1,6 @@
 <template>
   <div :class="name">
-    <example-dialog v-if="exampleDialogObj.flag"></example-dialog>
+    <example-dialog v-if="$route.name == 'examplePage' && exampleDialogObj.flag"></example-dialog>
   </div>
 </template>
 <script>

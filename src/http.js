@@ -1,11 +1,13 @@
 /* eslint-disable */
 import Vue from "vue";
 import axios from "axios";
-import qs from 'qs';
+import qs from "qs";
+import baseConfig from "../config/";
+
 // 基本配置
 //定义公共headers
 axios.defaults.timeout = 60000;
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL;
+axios.defaults.baseURL = baseConfig.baseUrl;
 axios.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded;charset=UTF-8";
 //设置超时
 //设置请求基地址，第三方api，所以开启了反向代理，如有改变请自行更改

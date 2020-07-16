@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --mode development --progress --color",
-    "test": "vue-cli-service serve --mode test",
-    "demo": "vue-cli-service serve --mode demo",
     "build": "vue-cli-service build --mode production --progress --color",
+    "build:pro": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/index.js\" \"dist/config.js\"",
+    "demo:demo": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/demo.js\" \"dist/config.js\"",
+    "test": "vue-cli-service serve --mode test",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
