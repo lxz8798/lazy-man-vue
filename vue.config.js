@@ -8,7 +8,11 @@
 
 const path = require("path");
 const glob = require('glob');
+const webpack = require('webpack');
+const PAGES_PATH = path.resolve(__dirname, './src/pages');
+// gzip压缩
 const CompressionWebpackPlugin = require('compression-webpack-plugin');
+
 const productionGzipExtensions = ['js', 'css'];
 const isProduction = process.env.NODE_ENV !== 'development';
 
@@ -17,11 +21,12 @@ const cdn = {
     'https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css'
   ],
   js: [
-      'https://s0.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.js',
+      'https://s2.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js',
       'https://s2.pstatp.com/cdn/expire-1-M/vuex/3.1.0/vuex.min.js',
       'https://s2.pstatp.com/cdn/expire-1-M/axios/0.19.0-beta.1/axios.min.js',
       'https://s1.pstatp.com/cdn/expire-1-M/moment.js/2.24.0/moment.min.js',
-      'https://s2.pstatp.com/cdn/expire-1-M/lodash.js/4.17.12-pre/lodash.min.js'
+      'https://s2.pstatp.com/cdn/expire-1-M/lodash.js/4.17.12-pre/lodash.min.js',
+      'https://s0.pstatp.com/cdn/expire-1-M/echarts/4.2.1-rc.3/echarts.min.js'
   ]
 }
 
@@ -42,7 +47,7 @@ module.exports = {
       entry: 'src/main.js',
       template: 'public/index.html',
       filename: 'index.html',
-      title: '基于cli3.0的项目基础骨架',
+      title: '此骨架为了快速构建空白的VUE项目而诞生',
       // chunks: ['chunk-vendors', 'chunk-common', 'index']
     },
     // index2: {
@@ -87,9 +92,13 @@ module.exports = {
     //     }
     //   }
     // },
+    // overlay: {
+    //   warnings: false,
+    //   errors: false
+    // },
     // https: true
   },
-
+  lintOnSave: true, // 如果需要关闭eslint 把lintOnsave改成false即可。
   // 支持的loader有css-loader、postcss-loader、sass-loader、less-loader、stylus-loader
   // 配置高于chianWebpack中的关于 css loader的配置
   css: {
@@ -105,22 +114,37 @@ module.exports = {
   configureWebpack: config => {
     // 生产环境相关配置
     if (isProduction) {
+      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
       // 忽略项，如果开启下面的三项，则不打包vue、vue-router、momoent，需要从CDN之类的外站引入，需要线上支持
       config.externals = {
         'vue': 'Vue',
         'vuex': 'Vuex',
         'axios': 'axios',
+        'echarts': 'echarts',
         'lodash': 'lodash'
       }
       // gzip配置
       config.plugins.push(
         new CompressionWebpackPlugin({
+          filename: '[path].gz[query]',
           algorithm: 'gzip',
-          test: /\.js$|\.html$|\.json$|\.css/,
+          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
           threshold: 10240,
           minRatio: 0.8,
           deleteOriginalAssets: false, // 删除原文件
-        })
+        }),
+        new webpack.BannerPlugin({
+          entryOnly: true,
+          banner: () => {
+          return `Copyright @ 2020`
+          + `\n`
+          + `Author: lixiaozhu`
+          + `\n`
+          + `Documentation: build vue project quick`
+          + `\n`
+          + `Date: ${new Date()}`
+          }
+        }),
       );
     }
   },
@@ -133,12 +157,15 @@ module.exports = {
       args[0].cdn = cdn
       return args;
     })
-    // 移除 prefetch 插件
-    config.plugins.delete('prefetch');
-    // 移除 preload 插件
-    config.plugins.delete('preload');
+    // 移除 preload
+    glob.sync(PAGES_PATH + '/*/main.js').forEach(filePath => {
+      const pageName = path.basename(path.dirname(filePath))
+      config.plugins.delete(`preload-${pageName}`)
+      config.plugins.delete(`prefetch-${pageName}`)
+    })
     // 为开发环境修改配置...
     config.module.rule('iview').test(/iview.src.*?js$/).use('babel').loader('babel-loader').end();
-    
+    // 压缩图片
+    config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({ bypassOnDebug: true }).end();
   }
 }

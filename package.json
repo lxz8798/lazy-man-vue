@@ -58,12 +58,12 @@
     "babel-jest": "^23.0.1",
     "babel-plugin-import": "^1.11.0",
     "compass-mixins": "^0.12.10",
-    "compression-webpack-plugin": "^2.0.0",
+    "compression-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
     "mockjs": "^1.1.0",
     "purify-css": "^1.2.5",
     "purifycss-webpack": "^0.7.0",
-    "uglifyjs-webpack-plugin": "^2.0.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.5.17",
     "vue-test-utils": "^1.0.0-beta.11"
   }

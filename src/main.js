@@ -12,7 +12,6 @@ import store from "./store/index";
 import http from "./http";
 import utils from "./utils/";
 import api from "./api/";
-import echarts from "echarts";
 import regCopm from "./utils/regComponents";
 import config from "../config/";
 import "@/components/autoInject.js";
