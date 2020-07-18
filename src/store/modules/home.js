@@ -7,7 +7,7 @@
  */
 //
 
-const FAKE_MUTATIONS = 'FAKE_MUTATIONS';
+const FAKE_MUTATIONS = "FAKE_MUTATIONS";
 
 const homeStore = {
   state: {
@@ -19,6 +19,6 @@ const homeStore = {
       state.fakeFlag = value;
     }
   },
-  actions: {},
-}
-export default homeStore
+  actions: {}
+};
+export default homeStore;

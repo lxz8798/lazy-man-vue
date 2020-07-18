@@ -1,10 +1,12 @@
 <template>
   <div :class="name">
-    <example-dialog v-if="$route.name == 'examplePage' && exampleDialogObj.flag"></example-dialog>
+    <example-dialog
+      v-if="$route.name == 'examplePage' && exampleDialogObj.flag"
+    ></example-dialog>
   </div>
 </template>
 <script>
-const name = 'dialog-manege';
+const name = "dialog-manege";
 import exampleDialog from "./exampleDialog";
 import { mapState, mapMutations } from "vuex";
 export default {
@@ -25,7 +27,7 @@ export default {
   created() {},
   mounted() {},
   watch: {},
-  methods: {},
+  methods: {}
 };
 </script>
 <style lang="scss">

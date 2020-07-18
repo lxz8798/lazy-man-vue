@@ -5,7 +5,11 @@
     <!-- 第一屏内容 -->
     <section class="first_box_wrap" ref="firstBox">
       <!-- 内容 -->
-      <h5>为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。{{this.$config.baseUrl}}</h5>
+      <h5>
+        为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。{{
+          this.$config.baseUrl
+        }}
+      </h5>
       <p>
         1、使用normalize.css初始化了浏览器样式，默认集成lodash、mockjs、echarts等等。
       </p>
@@ -37,7 +41,8 @@
         10、config.externals是忽略打包，配合cdn里面使用。
       </p>
       <p>
-        11、使用cdn的方式分离vendors依赖，分离插件，如果需要使用import 可以在vue.config.js里面把cdn注释，同时解开main、http、router、vuex/index，store/index里面的相关import。
+        11、使用cdn的方式分离vendors依赖，分离插件，如果需要使用import
+        可以在vue.config.js里面把cdn注释，同时解开main、http、router、vuex/index，store/index里面的相关import。
       </p>
       <p>
         12、更新了压缩图片和打包后删除console。

@@ -5,7 +5,7 @@ module.exports = {
     return size;
   },
   plugins: {
-    'autoprefixer': {
+    autoprefixer: {
       overrideBrowserslist: [
         "Android 4.1",
         "iOS 7.1",
@@ -14,12 +14,12 @@ module.exports = {
         "ie >= 8"
       ]
     },
-    'postcss-pxtorem': {
+    "postcss-pxtorem": {
       fn: () => {
-        console.log(this, 'this')
+        console.log(this, "this");
       },
-      rootValue: 37.5,//结果为：设计稿元素尺寸/37.5，比如元素宽375px,最终页面会换算成 10rem
-      propList: ['*']
+      rootValue: 37.5, //结果为：设计稿元素尺寸/37.5，比如元素宽375px,最终页面会换算成 10rem
+      propList: ["*"]
     }
   }
 };

@@ -1,34 +1,31 @@
-
 /**
  * vue-cli3.0 的自定义配置
  * 引入了多页开发、多代码入口、多环境入口、优化插件等
  * @author 李啸竹
  */
-'use strict';
+"use strict";
 
 const path = require("path");
-const glob = require('glob');
-const webpack = require('webpack');
-const PAGES_PATH = path.resolve(__dirname, './src/pages');
+const glob = require("glob");
+const webpack = require("webpack");
+const PAGES_PATH = path.resolve(__dirname, "./src/pages");
 // gzip压缩
-const CompressionWebpackPlugin = require('compression-webpack-plugin');
+const CompressionWebpackPlugin = require("compression-webpack-plugin");
 
-const productionGzipExtensions = ['js', 'css'];
-const isProduction = process.env.NODE_ENV !== 'development';
+const productionGzipExtensions = ["js", "css"];
+const isProduction = process.env.NODE_ENV === "production";
 
 const cdn = {
-  css: [
-    'https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css'
-  ],
+  css: ["https://cdn.staticfile.org/iview/3.2.2-rc.1/styles/iview.css"],
   js: [
-      'https://s2.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js',
-      'https://s2.pstatp.com/cdn/expire-1-M/vuex/3.1.0/vuex.min.js',
-      'https://s2.pstatp.com/cdn/expire-1-M/axios/0.19.0-beta.1/axios.min.js',
-      'https://s1.pstatp.com/cdn/expire-1-M/moment.js/2.24.0/moment.min.js',
-      'https://s2.pstatp.com/cdn/expire-1-M/lodash.js/4.17.12-pre/lodash.min.js',
-      'https://s0.pstatp.com/cdn/expire-1-M/echarts/4.2.1-rc.3/echarts.min.js'
+    "https://s2.pstatp.com/cdn/expire-1-M/vue/2.6.10/vue.min.js",
+    "https://s2.pstatp.com/cdn/expire-1-M/vuex/3.1.0/vuex.min.js",
+    "https://s2.pstatp.com/cdn/expire-1-M/axios/0.19.0-beta.1/axios.min.js",
+    "https://s1.pstatp.com/cdn/expire-1-M/moment.js/2.24.0/moment.min.js",
+    "https://s2.pstatp.com/cdn/expire-1-M/lodash.js/4.17.12-pre/lodash.min.js",
+    "https://s0.pstatp.com/cdn/expire-1-M/echarts/4.2.1-rc.3/echarts.min.js"
   ]
-}
+};
 
 module.exports = {
   // 输出目录
@@ -44,12 +41,12 @@ module.exports = {
   // 每个page对应一个入口
   pages: {
     index: {
-      entry: 'src/main.js',
-      template: 'public/index.html',
-      filename: 'index.html',
-      title: '此骨架为了快速构建空白的VUE项目而诞生',
+      entry: "src/main.js",
+      template: "public/index.html",
+      filename: "index.html",
+      title: "此骨架为了快速构建空白的VUE项目而诞生"
       // chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
+    }
     // index2: {
     //   entry: 'src/main.js',
     //   template: 'public/index.html',
@@ -66,7 +63,7 @@ module.exports = {
   productionSourceMap: false,
 
   // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性（注：仅影响构建时注入的标签）
-  crossorigin: '',
+  crossorigin: "",
 
   // 在生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
   integrity: false,
@@ -80,7 +77,7 @@ module.exports = {
     // host: '0.0.0.0',
     // https:false, // https:{type:booklen}
     // open:true, // 配置自动启动浏览器
-    compress: false, // 开启压缩
+    compress: false // 开启压缩
     // proxy:null,
     // 不需要可以设置为proxy:null
     // proxy: {
@@ -113,38 +110,43 @@ module.exports = {
 
   configureWebpack: config => {
     // 生产环境相关配置
-    if (isProduction) {
-      config.optimization.minimizer[0].options.terserOptions.compress.drop_console = true;
+      if (isProduction) {
+      config.optimization.minimizer[0].options.terserOptions.compress['warnings'] = false;
+      config.optimization.minimizer[0].options.terserOptions.compress['drop_console'] = true;
+      config.optimization.minimizer[0].options.terserOptions.compress['drop_debugger'] = true;
+      config.optimization.minimizer[0].options.terserOptions.compress['pure_funcs'] =['console.log'];
       // 忽略项，如果开启下面的三项，则不打包vue、vue-router、momoent，需要从CDN之类的外站引入，需要线上支持
       config.externals = {
-        'vue': 'Vue',
-        'vuex': 'Vuex',
-        'axios': 'axios',
-        'echarts': 'echarts',
-        'lodash': 'lodash'
-      }
+        vue: "Vue",
+        vuex: "Vuex",
+        axios: "axios",
+        echarts: "echarts",
+        lodash: "lodash"
+      };
       // gzip配置
       config.plugins.push(
         new CompressionWebpackPlugin({
-          filename: '[path].gz[query]',
-          algorithm: 'gzip',
-          test: new RegExp('\\.(' + productionGzipExtensions.join('|') + ')$'),
+          filename: "[path].gz[query]",
+          algorithm: "gzip",
+          test: new RegExp("\\.(" + productionGzipExtensions.join("|") + ")$"),
           threshold: 10240,
           minRatio: 0.8,
-          deleteOriginalAssets: false, // 删除原文件
+          deleteOriginalAssets: false // 删除原文件
         }),
         new webpack.BannerPlugin({
           entryOnly: true,
           banner: () => {
-          return `Copyright @ 2020`
-          + `\n`
-          + `Author: lixiaozhu`
-          + `\n`
-          + `Documentation: build vue project quick`
-          + `\n`
-          + `Date: ${new Date()}`
+            return (
+              `Copyright @ 2020` +
+              `\n` +
+              `Author: lixiaozhu` +
+              `\n` +
+              `Documentation: build vue project quick` +
+              `\n` +
+              `Date: ${new Date()}`
+            );
           }
-        }),
+        })
       );
     }
   },
@@ -154,18 +156,28 @@ module.exports = {
   chainWebpack: config => {
     // 为html注入cdn
     config.plugin("html-index").tap(args => {
-      args[0].cdn = cdn
+      args[0].cdn = cdn;
       return args;
-    })
+    });
     // 移除 preload
-    glob.sync(PAGES_PATH + '/*/main.js').forEach(filePath => {
-      const pageName = path.basename(path.dirname(filePath))
-      config.plugins.delete(`preload-${pageName}`)
-      config.plugins.delete(`prefetch-${pageName}`)
-    })
+    glob.sync(PAGES_PATH + "/*/main.js").forEach(filePath => {
+      const pageName = path.basename(path.dirname(filePath));
+      config.plugins.delete(`preload-${pageName}`);
+      config.plugins.delete(`prefetch-${pageName}`);
+    });
     // 为开发环境修改配置...
-    config.module.rule('iview').test(/iview.src.*?js$/).use('babel').loader('babel-loader').end();
+    config.module
+      .rule("iview")
+      .test(/iview.src.*?js$/)
+      .use("babel")
+      .loader("babel-loader")
+      .end();
     // 压缩图片
-    config.module.rule('images').use('image-webpack-loader').loader('image-webpack-loader').options({ bypassOnDebug: true }).end();
+    config.module
+      .rule("images")
+      .use("image-webpack-loader")
+      .loader("image-webpack-loader")
+      .options({ bypassOnDebug: true })
+      .end();
   }
-}
+};

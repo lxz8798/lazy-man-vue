@@ -6,4 +6,4 @@
 export const HOME_CURR_PUBLIC_WIDTH = "HOME_CURR_PUBLIC_WIDTH";
 
 // dialog mutations
-export const EXAMPLE_SET_DIALOG = 'EXAMPLE_SET_DIALOG';
+export const EXAMPLE_SET_DIALOG = "EXAMPLE_SET_DIALOG";

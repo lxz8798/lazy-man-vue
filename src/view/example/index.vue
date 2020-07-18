@@ -33,7 +33,9 @@
       <Upload action="testUpload()">
         <Button icon="ios-cloud-upload-outline">Upload files</Button>
       </Upload>
-      <Button icon="checkmark" @click.native="EXAMPLE_SET_DIALOG(true)">点击显示弹窗</Button>
+      <Button icon="checkmark" @click.native="EXAMPLE_SET_DIALOG(true)"
+        >点击显示弹窗</Button
+      >
     </div>
   </div>
 </template>

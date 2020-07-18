@@ -1,10 +1,15 @@
 <template>
-  <Modal v-model="exampleDialogObjFlag" title="Welcome" :transfer="false" @keyup.esc="EXAMPLE_SET_DIALOG(false)">
+  <Modal
+    v-model="exampleDialogObjFlag"
+    title="Welcome"
+    :transfer="false"
+    @keyup.esc="EXAMPLE_SET_DIALOG(false)"
+  >
     这里是MODAL
   </Modal>
 </template>
 <script>
-const name = 'exampleDialog';
+const name = "exampleDialog";
 import { mapState, mapMutations } from "vuex";
 import { Modal } from "iview";
 export default {
@@ -23,7 +28,7 @@ export default {
     }),
     exampleDialogObjFlag: {
       get: function() {
-        return this.exampleDialogObj.flag
+        return this.exampleDialogObj.flag;
       },
       set: function(newVal) {
         this.EXAMPLE_SET_DIALOG(newVal);
@@ -33,11 +38,10 @@ export default {
   created() {},
   mounted() {},
   watch: {
-    exampleDialogObjFlag(newVal, oldVal) {
-    }
+    exampleDialogObjFlag(newVal, oldVal) {}
   },
   methods: {
-    ...mapMutations('dialogs', ["EXAMPLE_SET_DIALOG"])
+    ...mapMutations("dialogs", ["EXAMPLE_SET_DIALOG"])
   }
 };
 </script>
