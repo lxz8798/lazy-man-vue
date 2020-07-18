@@ -5,21 +5,12 @@ language: node_js
 node_js:
   - "12.16.3"
 
-env:
-  global:
-    - GitHub_REF: git@github.com:lxz8798/lazy-man-vue.git
-
 script:
   - npm run build
+  - npm run cover
 
 after_script:
-  - cd ./dist
-  - git init
-  - git config user.name "lxz8798"
-  - git config user.email "devilboy.l@qq.com"
-  - git add .
-  - git commit -m "Update tools"
-  - git push --force --quiet "git@github.com:lxz8798/lazy-man-vue.git" master:master
+  - "cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js"
 
 cache:
   directories:
