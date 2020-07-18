@@ -95,7 +95,7 @@ module.exports = {
     // },
     // https: true
   },
-  lintOnSave: true, // 如果需要关闭eslint 把lintOnsave改成false即可。
+  lintOnSave: false, // 如果需要关闭eslint 把lintOnsave改成false即可。
   // 支持的loader有css-loader、postcss-loader、sass-loader、less-loader、stylus-loader
   // 配置高于chianWebpack中的关于 css loader的配置
   css: {
