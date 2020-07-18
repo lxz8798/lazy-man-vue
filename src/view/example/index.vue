@@ -3,27 +3,9 @@
     <!-- common/public开头的组件会自动注册到全局 -->
     <public-title :title="msg"></public-title>
     <!-- fake列表 -->
-    <ul class="example-ul-wrap">
-      <li v-for="(item, index) in dataList" :key="index">
-        <span class="l">
-          <img :src="item.coverUrl" alt />
-        </span>
-        <span class="r">
-          <ul>
-            <li>
-              <h3>{{ item.title }}</h3>
-            </li>
-            <li class="detail-info">
-              <span>{{ "作者：" + item.name }}</span>
-              <span>{{ "生日：" + item.birthday }}</span>
-              <span>{{ "手机：" + item.phone }}</span>
-              <span>{{ "地址：" + item.address }}</span>
-            </li>
-            <li></li>
-          </ul>
-        </span>
-      </li>
-    </ul>
+    <div class="fakeList">
+      <fake-list></fake-list>
+    </div>
     <!-- echarts -->
     <div class="charts" ref="bar"></div>
     <!-- module dialogs -->
@@ -50,37 +32,39 @@ div.example-wrap {
   align-items: center;
   border: 1px solid #cecece;
   margin: 0 auto;
-  > .example-ul-wrap {
+  > .fakeList {
     width: inherit;
     height: 20%;
-    display: inline-flex;
-    align-items: center;
     padding: 15px;
-    li {
-      flex: 1 1 20%;
-      line-height: 150%;
-      list-style-type: none;
-      display: flex;
-      flex-direction: row;
-      padding-right: 15px;
-      margin-bottom: 5px;
-      span.l {
-        width: 1rem;
-        height: 1.3rem;
-        img {
-          width: inherit;
-          height: inherit;
-        }
-      }
-      span.r {
+    ul {
+      display: inline-flex;
+      align-items: center;
+      li {
+        flex: 1 1 20%;
+        line-height: 150%;
+        list-style-type: none;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 15px;
-        ul {
-          li.detail-info {
-            display: flex;
-            flex-direction: column;
+        flex-direction: row;
+        padding-right: 15px;
+        margin-bottom: 5px;
+        span.l {
+          width: 1rem;
+          height: 1.3rem;
+          img {
+            width: inherit;
+            height: inherit;
+          }
+        }
+        span.r {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding-left: 15px;
+          ul {
+            li.detail-info {
+              display: flex;
+              flex-direction: column;
+            }
           }
         }
       }
@@ -101,28 +85,20 @@ div.example-wrap {
 /* eslint-disable */
 import dialogs from "@/components/dialogs";
 import { Modal, Upload, Button } from "iview";
+import fakeList from "@/components/list/fakeList"
 import dialogManage from "@/components/dialogs/";
 import exampleApi from "@/api/example";
 import { mapState, mapMutations } from "vuex";
 export default {
   name: "examplePage",
-  components: { dialogs, Modal, Upload, Button, dialogManage },
+  components: { dialogs, Modal, Upload, Button, fakeList, dialogManage },
   data() {
     return {
       msg: "这里是部份骨架使用例子!",
-      dataList: {}
     };
   },
-  created() {
-    // console.log(this.$route.params.id,'params')
-    this.getFakeUserList();
-  },
-  watch: {
-    $route(to, from) {
-      console.log(to, "route to");
-      console.log(from, "route from");
-    }
-  },
+  created() {},
+  watch: {},
   /**
    * @Description: 监听动态路由变化
    * @Author: 李啸竹
@@ -166,16 +142,6 @@ export default {
       if (option && typeof option === "object") {
         myChart.setOption(option, true);
       }
-    },
-    /**
-     * 来自mockjs的模拟数据
-     * @author 李啸竹
-     */
-    async getFakeUserList() {
-      // 使用jquery方式获得mockjs数据
-      const params = {};
-      const res = await this.$http.get("http://localhost:8080/fake/v1/users");
-      this.dataList = res;
     }
   }
 };

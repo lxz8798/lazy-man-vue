@@ -93,8 +93,9 @@ export default {
   justify-content: center;
   align-items: center;
   .first_box_wrap {
-    width: 75%;
-    height: 50%;
+    padding: 10%;
+    width: inherit;
+    height: inherit;
     h5,
     p {
       font-size: 12px;

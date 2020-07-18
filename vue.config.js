@@ -99,7 +99,6 @@ module.exports = {
   // 支持的loader有css-loader、postcss-loader、sass-loader、less-loader、stylus-loader
   // 配置高于chianWebpack中的关于 css loader的配置
   css: {
-    modules: true,
     sourceMap: false,
     loaderOptions: {
       sass: {

@@ -11,8 +11,8 @@ export default [
     component: homeComponent("home"),
     meta: {
       auth: true,
-      showHead: true,
-      showFooter: true,
+      showHead: false,
+      showFooter: false,
       activeIcon: "home"
     }
   }
