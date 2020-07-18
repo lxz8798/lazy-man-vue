@@ -21,13 +21,13 @@
 ......
 
 ```
-git clone git@github.com:lxz8798/myBasicProjectFramework.git
+git clone git@github.com:lxz8798/lazy-bugs-vue.git
 ```
 ```
-cd myBasicProjectFramework
+cd lazy-bugs-vue
 ```
 ```
-npm i
+npm i or yarn
 ```
 ```
 npm run serve
