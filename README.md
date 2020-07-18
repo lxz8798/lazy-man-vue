@@ -20,14 +20,14 @@
 #### 骨架会不定期更新更多优化内容
 ......
 
-# lazy-bugs-vue
+# lazy-man-vue
 
 
 ```
-git clone git@github.com:lxz8798/lazy-bugs-vue.git
+git clone git@github.com:lxz8798/lazy-man-vue.git
 ```
 ```
-cd lazy-bugs-vue
+cd lazy-man-vue
 ```
 ```
 npm i or yarn

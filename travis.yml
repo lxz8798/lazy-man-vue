@@ -7,7 +7,7 @@ node_js:
 
 env:
   global:
-    - GitHub_REF: git@github.com:lxz8798/lazy-bugs-vue.git
+    - GitHub_REF: git@github.com:lxz8798/lazy-man-vue.git
 
 branches:
   only:
