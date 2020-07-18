@@ -9,22 +9,22 @@ env:
   global:
     - GitHub_REF: git@github.com:lxz8798/lazy-man-vue.git
 
-branches:
-  only:
-    - master
-
-install:
-  - npm install
-
 script:
-  - npm test
+  - npm run build
+
+after_script:
+  - cd ./dist
+  - git init
+  - git config user.name "lxz8798"
+  - git config user.email "devilboy.l@qq.com"
+  - git add .
+  - git commit -m "Update tools"
+  - git push --force --quiet "git@github.com:lxz8798/lazy-man-vue.git" master:master
 
 cache:
   directories:
     - node_modules
-    
-webhooks:
-    urls:
-      - http://v3.lazy-studio.com/
-    on_success: never # Successful build does not send mail.
-    on_failure: always # Build failure always sends a message.
+
+branches:
+  only:
+    - master
