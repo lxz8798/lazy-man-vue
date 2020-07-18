@@ -21,7 +21,7 @@
 ......
 
 # lazy-man-vue
-[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)![npm](https://img.shields.io/npm/v/node?label=node)![npm](https://img.shields.io/npm/v/vue?label=vue)
+[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)  ![npm](https://img.shields.io/npm/v/node?label=node)  ![npm](https://img.shields.io/npm/v/vue?label=vue)
 
 
 ```
