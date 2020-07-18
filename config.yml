@@ -1,0 +1,30 @@
+version: 1.0
+
+language: node_js
+
+node_js:
+  - "12.16.3"
+
+env:
+  global:
+    - GitHub_REF: git@github.com:lxz8798/lazy-bugs-vue.git
+
+branches:
+  only:
+    - master
+
+install:
+  - npm install
+
+script:
+  - npm test
+
+cache:
+  directories:
+    - node_modules
+    
+webhooks:
+    urls:
+      - http://v3.lazy-studio.com/
+    on_success: never # Successful build does not send mail.
+    on_failure: always # Build failure always sends a message.
