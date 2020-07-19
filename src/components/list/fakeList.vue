@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="fake_list">
     <li v-for="(item, index) in dataList" :key="index">
       <span class="l">
         <img :src="item.coverUrl" alt />

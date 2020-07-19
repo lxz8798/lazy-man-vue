@@ -1,5 +1,5 @@
-# lazy-man-vue
-[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)  [![Coverage Status](https://coveralls.io/repos/github/lxz8798/lazy-man-vue/badge.svg)](https://coveralls.io/github/lxz8798/lazy-man-vue)  ![npm](https://img.shields.io/npm/v/node?label=node)  ![npm](https://img.shields.io/npm/v/vue?label=vue)
+# LAZY-MAN-VUE
+[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)  [![Coverage Status](https://coveralls.io/repos/github/lxz8798/lazy-man-vue/badge.svg?branch=master)](https://coveralls.io/github/lxz8798/lazy-man-vue?branch=master)  ![npm](https://img.shields.io/npm/v/node?label=node)  ![npm](https://img.shields.io/npm/v/vue?label=vue) 
 
 ### 为了更高效、方便、快速、便捷的开发更种VUE应用而诞生的空白项目骨架，内置了一些常用插件优化了一些打包配置等等。
 01. 使用normalize.css初始化了浏览器样式，默认集成lodash、mockjs、echarts等等。
