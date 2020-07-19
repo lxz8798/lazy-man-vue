@@ -121,8 +121,8 @@ module.exports = {
     workboxOptions: {
       // swSrc is required in InjectManifest mode.
       swSrc: "public/js/service-worker.js",
-      skipWaiting: true,
-      clientsClaim: true,
+      // skipWaiting: true,
+      // clientsClaim: true,
       // importScripts: "https://cdn.your.info/workbox-v4.3.1/workbox-sw.js"
       // ...other Workbox options...
     }

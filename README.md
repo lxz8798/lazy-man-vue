@@ -1,4 +1,7 @@
-# 为了更高效更方便更快速的开发项目而配置的基础的空白项目骨架，内置了一些常用插件，优化了一些基础配置。
+# lazy-man-vue
+[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)  [![Coverage Status](https://coveralls.io/repos/github/lxz8798/lazy-man-vue/badge.svg)](https://coveralls.io/github/lxz8798/lazy-man-vue)  ![npm](https://img.shields.io/npm/v/node?label=node)  ![npm](https://img.shields.io/npm/v/vue?label=vue)
+
+### 为了更高效、方便、快速、便捷的开发更种VUE应用而诞生的空白项目骨架，内置了一些常用插件优化了一些打包配置等等。
 01. 使用normalize.css初始化了浏览器样式，默认集成lodash、mockjs、echarts等等。
 02. 项目骨架内使用vw、vh定义宽高、自动转换px为rem适应屏幕，可以拉伸屏幕大小看变化。
 03. 内嵌iView采用按需的方式。
@@ -19,10 +22,6 @@
 #### 还有更多操作请自行发掘
 #### 骨架会不定期更新更多优化内容
 ......
-
-# lazy-man-vue
-[![Build Status](https://travis-ci.com/lxz8798/lazy-man-vue.svg?branch=master)](https://travis-ci.com/lxz8798/lazy-man-vue)  [![Coverage Status](https://coveralls.io/repos/github/lxz8798/lazy-man-vue/badge.svg)](https://coveralls.io/github/lxz8798/lazy-man-vue)  ![npm](https://img.shields.io/npm/v/node?label=node)  ![npm](https://img.shields.io/npm/v/vue?label=vue)
-
 
 ```
 git clone git@github.com:lxz8798/lazy-man-vue.git
