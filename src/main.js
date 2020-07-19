@@ -18,6 +18,7 @@ import "@/components/autoInject.js";
 import "./api/fakeApi";
 import "normalize.css/normalize.css";
 import "lib-flexible";
+// import "./registerServiceWorker";
 
 // Vue.use(_);
 Vue.use(api);

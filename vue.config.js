@@ -37,6 +37,24 @@ module.exports = {
   // 生成的静态资源是否使用哈希，默认是true
   filenameHashing: true,
 
+  // 是否使用包含运行时编译器的Vue核心的构建，热重启
+  runtimeCompiler: true,
+
+  // 生产环境是否生成 sourceMap 文件
+  productionSourceMap: false,
+
+  // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性（注：仅影响构建时注入的标签）
+  crossorigin: "",
+
+  // 在生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
+  integrity: false,
+
+  // 默认情况下 babel-loader 忽略其中的所有文件 node_modules
+  transpileDependencies: [],
+
+  // 如果需要关闭eslint 把lintOnsave改成false即可。
+  lintOnSave: false,
+
   // 入口文件的配置项
   // 每个page对应一个入口
   pages: {
@@ -55,21 +73,6 @@ module.exports = {
     //   chunks: ['chunk-vendors', 'chunk-common', 'index']
     // },
   },
-
-  // 是否使用包含运行时编译器的Vue核心的构建，热重启
-  runtimeCompiler: true,
-
-  // 生产环境是否生成 sourceMap 文件
-  productionSourceMap: false,
-
-  // 设置生成的 HTML 中 <link rel="stylesheet"> 和 <script> 标签的 crossorigin 属性（注：仅影响构建时注入的标签）
-  crossorigin: "",
-
-  // 在生成的 HTML 中的 <link rel="stylesheet"> 和 <script> 标签上启用 Subresource Integrity (SRI)
-  integrity: false,
-
-  // 默认情况下 babel-loader 忽略其中的所有文件 node_modules
-  transpileDependencies: [],
 
   // host,post,https
   devServer: {
@@ -95,7 +98,7 @@ module.exports = {
     // },
     // https: true
   },
-  lintOnSave: false, // 如果需要关闭eslint 把lintOnsave改成false即可。
+
   // 支持的loader有css-loader、postcss-loader、sass-loader、less-loader、stylus-loader
   // 配置高于chianWebpack中的关于 css loader的配置
   css: {
@@ -104,6 +107,24 @@ module.exports = {
       sass: {
         data: `@import "@/assets/base/_base.scss";`
       }
+    }
+  },
+
+  pwa: {
+    name: "lazy-man-vue-pwa",
+    themeColor: "#4DBA87",
+    msTileColor: "#000000",
+    appleMobileWebAppCapable: "yes",
+    appleMobileWebAppStatusBarStyle: "black",
+    // configure the workbox plugin (GenerateSW or InjectManifest)
+    workboxPluginMode: "InjectManifest",
+    workboxOptions: {
+      // swSrc is required in InjectManifest mode.
+      swSrc: "public/js/service-worker.js",
+      skipWaiting: true,
+      clientsClaim: true,
+      // importScripts: "https://cdn.your.info/workbox-v4.3.1/workbox-sw.js"
+      // ...other Workbox options...
     }
   },
 

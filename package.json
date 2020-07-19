@@ -5,12 +5,11 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode development --progress --color",
     "build": "vue-cli-service build --mode production --progress --color",
-    "test:unit": "vue-cli-service test:unit && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint",
     "build:pro": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/index.js\" \"dist/config.js\"",
     "demo:demo": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/demo.js\" \"dist/config.js\"",
-    "test": "vue-cli-service serve --mode test",
-    "coveralls": "coveralls < coverage/lcov.info"
+    "test": "vue-cli-service serve --mode test"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
@@ -24,6 +23,7 @@
     "node-sass": "^4.9.4",
     "normalize.css": "^8.0.0",
     "postcss-pxtorem": "^5.1.1",
+    "register-service-worker": "^1.7.1",
     "sass-loader": "7.1.0",
     "vant": "^1.6.17",
     "vue": "^2.5.17",
@@ -37,7 +37,6 @@
     "@vue/cli-plugin-pwa": "~4.4.0",
     "@vue/cli-plugin-router": "~4.4.0",
     "@vue/cli-plugin-unit-jest": "~4.4.0",
-    "@vue/cli-plugin-unit-mocha": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "^4.4.6",
     "@vue/eslint-config-prettier": "^6.0.0",
@@ -73,8 +72,7 @@
     "extends": [
       "plugin:vue/essential",
       "eslint:recommended",
-      "plugin:vue/strongly-recommended",
-      "@vue/standard"
+      "@vue/prettier"
     ],
     "rules": {
       "generator-star-spacing": "off",
@@ -82,15 +80,6 @@
       "quotes": "off"
     },
     "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "mocha": true
-        }
-      },
       {
         "files": [
           "**/__tests__/*.{j,t}s?(x)",

@@ -10,8 +10,7 @@ script:
   - npm run build
 
 after_success:
-  - npm run test:unit
-  - npm run coveralls
+  - npm run test:unit && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls
 
 after_script:
 
