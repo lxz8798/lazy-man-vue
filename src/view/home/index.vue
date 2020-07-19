@@ -66,9 +66,7 @@
 </template>
 <script>
 const name = "home_wrap";
-import { Modal } from "iview";
 export default {
-  components: { Modal },
   name: "home",
   data() {
     return {

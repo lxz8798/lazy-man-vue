@@ -109,11 +109,19 @@ module.exports = {
 
   configureWebpack: config => {
     // 生产环境相关配置
-      if (isProduction) {
-      config.optimization.minimizer[0].options.terserOptions.compress['warnings'] = false;
-      config.optimization.minimizer[0].options.terserOptions.compress['drop_console'] = true;
-      config.optimization.minimizer[0].options.terserOptions.compress['drop_debugger'] = true;
-      config.optimization.minimizer[0].options.terserOptions.compress['pure_funcs'] =['console.log'];
+    if (isProduction) {
+      config.optimization.minimizer[0].options.terserOptions.compress[
+        "warnings"
+      ] = false;
+      config.optimization.minimizer[0].options.terserOptions.compress[
+        "drop_console"
+      ] = true;
+      config.optimization.minimizer[0].options.terserOptions.compress[
+        "drop_debugger"
+      ] = true;
+      config.optimization.minimizer[0].options.terserOptions.compress[
+        "pure_funcs"
+      ] = ["console.log"];
       // 忽略项，如果开启下面的三项，则不打包vue、vue-router、momoent，需要从CDN之类的外站引入，需要线上支持
       config.externals = {
         vue: "Vue",

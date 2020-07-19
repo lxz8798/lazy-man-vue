@@ -5,11 +5,12 @@
   "scripts": {
     "serve": "vue-cli-service serve --mode development --progress --color",
     "build": "vue-cli-service build --mode production --progress --color",
+    "test:unit": "vue-cli-service test:unit && cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+    "lint": "vue-cli-service lint",
     "build:pro": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/index.js\" \"dist/config.js\"",
     "demo:demo": "vue-cli-service build --mode production --progress --color & xcopy /fy \"./config/demo.js\" \"dist/config.js\"",
     "test": "vue-cli-service serve --mode test",
-    "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "dependencies": {
     "amfe-flexible": "^2.2.1",
@@ -29,43 +30,13 @@
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "plugin:vue/strongly-recommended",
-      "@vue/standard"
-    ],
-    "rules": {
-      "generator-star-spacing": "off",
-      "no-unused-vars": "off",
-      "quotes": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "mocha": true
-        }
-      }
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
     "@vue/cli-plugin-e2e-cypress": "~4.4.0",
     "@vue/cli-plugin-eslint": "~4.4.0",
     "@vue/cli-plugin-pwa": "~4.4.0",
     "@vue/cli-plugin-router": "~4.4.0",
+    "@vue/cli-plugin-unit-jest": "~4.4.0",
     "@vue/cli-plugin-unit-mocha": "~4.4.0",
     "@vue/cli-plugin-vuex": "~4.4.0",
     "@vue/cli-service": "^4.4.6",
@@ -93,6 +64,46 @@
     "uglifyjs-webpack-plugin": "^2.2.0",
     "vue-template-compiler": "^2.6.11",
     "vue-test-utils": "^1.0.0-beta.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended",
+      "plugin:vue/strongly-recommended",
+      "@vue/standard"
+    ],
+    "rules": {
+      "generator-star-spacing": "off",
+      "no-unused-vars": "off",
+      "quotes": "off"
+    },
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "mocha": true
+        }
+      },
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
   },
   "browserslist": [
     "> 1%",
