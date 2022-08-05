@@ -86,17 +86,19 @@ export default {
 <style lang="scss">
 .home_wrap {
   width: $childBaseWidth; // 变量的设置可以参考base.scss
-  height: $childBaseHeight;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  min-height: $childBaseHeight;
+  @extend .flex_column_c;
+  
   .first_box_wrap {
-    padding: 10%;
     width: inherit;
     height: inherit;
+
+    @extend .flex_column_c;
+
     h5,
     p {
+      width: 90%;
+      text-align: left;
       font-size: .375rem;
     }
     h5 {
